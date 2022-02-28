@@ -18,8 +18,7 @@ function App() {
   // user from redux store import
 
   return (
-    <Provider store={configureStore}>
-      <PersistGate persistor={persistor} loading={null}>
+
         <Router>
             <Routes>
               <Route path='/login' element={<Login />} />
@@ -28,8 +27,7 @@ function App() {
               <Route path='/register' element={<Register />} />
             </Routes>
         </Router>
-      </PersistGate>
-    </Provider>
+   
   );
 }
 
