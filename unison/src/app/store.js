@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from '../features/auth/authSlice'
+import connectReducer from '../features/connections/connectSlice'
 
 export const store = configureStore({
-  
-    auth: authReducer
-    
+  reducer: {
+    auth: authReducer,
+    connect: connectReducer,
+  },
 })

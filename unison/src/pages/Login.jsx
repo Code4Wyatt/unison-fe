@@ -1,107 +1,18 @@
-import { useState, useEffect } from 'react'
-import { FaSignInAlt } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import Spinner from '../components/Spinner'
+import React, { useState } from 'react'
 
-function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  })
-
-  const { email, password } = formData
-
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
-  const {user, isError, isSuccess, isLoading, message} = useSelector(
-    (state) => state.user
-  )
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(message)
-    }
-
-    if (isSuccess || user) {
-      navigate('/')
-    }
-
-    dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])
-
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }))
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-
-    const userData = {
-      email,
-      password,
-    }
-
-    const loginFetch = async (userData) => {
-      try {
-        const response = await ("http://localhost:5000")
-      } catch (error) {
-        
-      }
-    }
-  }
-
-  if (isLoading) {
-    return <Spinner />
-  }
+const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
-    <>
-      <section className='heading'>
-        <h1>
-          <FaSignInAlt /> Login
-        </h1>
-        <p>Login and start setting goals</p>
-      </section>
-
-      <section className='form'>
-        <form onSubmit={onSubmit}>
-          <div className='form-group'>
-            <input
-              type='email'
-              className='form-control'
-              id='email'
-              name='email'
-              value={email}
-              placeholder='Enter your email'
-              onChange={onChange}
-            />
-          </div>
-          <div className='form-group'>
-            <input
-              type='password'
-              className='form-control'
-              id='password'
-              name='password'
-              value={password}
-              placeholder='Enter password'
-              onChange={onChange}
-            />
-          </div>
-
-          <div className='form-group'>
-            <button type='submit' className='btn btn-block'>
-              Submit
-            </button>
-          </div>
-        </form>
-      </section>
-    </>
+    <div className="login">
+      <form className="login__form">
+        <h1>Login</h1>
+        <input type="email" placeholder="Enter email address" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit" className="submit__btn">Submit</button>
+      </form>
+    </div>
   )
 }
 

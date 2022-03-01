@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const API = process.env.API_URL
 
-// Create new goal
+// Create new connection
 const createConnection = async (connectData, token) => {
   const config = {
     headers: {
@@ -10,41 +10,39 @@ const createConnection = async (connectData, token) => {
     },
   }
 
-  const response = await axios.post(API_URL + `/:id/follow`, connectData, config)
+  const response = await axios.post(API + `/:id/follow`, connectData, config)
 
   return response.data
 }
 
 // Get user goals
-const getGoals = async (token) => {
+const getConnections = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   }
 
-  const response = await axios.get(API_URL, config)
+  const response = await axios.get(API, config)
 
   return response.data
 }
 
-// Delete user goal
-const deleteGoal = async (goalId, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
+// // Delete user goal
+// const deleteGoal = async (goalId, token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   }
 
-  const response = await axios.delete(API_URL + goalId, config)
+//   const response = await axios.delete(API + goalId, config)
 
-  return response.data
+//   return response.data
+// }
+
+const connectService = {
+  createConnection
 }
 
-const goalService = {
-  createGoal,
-  getGoals,
-  deleteGoal,
-}
-
-export default goalService
+export default connectService
