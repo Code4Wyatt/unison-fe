@@ -1,4 +1,5 @@
-import acios from "axios";
+import axios from "axios";
+import { useNavigate, Redirect } from "react-router";
 
 const AuthActionType = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
@@ -12,7 +13,7 @@ const AuthActionType = {
 const RegisterAuthAction = (userState, history, setErrorHandler) => {
   return async (dispatch) => {
     try {
-      const res = await axios.post("/register", userState);
+      const res = await axios.post("http://localhost:5000/auth/register", userState);
       const { data } = res;
       dispatch({ type: AuthActionType.REGISTER_SUCCESS, payload: data });
       history.push("/login");
@@ -32,40 +33,54 @@ const RegisterAuthAction = (userState, history, setErrorHandler) => {
 };
 
 const LoginAuthAction = (loginState, history, setErrorHandler) => {
+  const API = process.env.API_URL;
+  const navigate = useNavigate();
   return async (dispatch) => {
     try {
-      const res = await axios.post("/authenticate", loginState);
-      const { data } = res;
+      const res = await axios.post(
+        "http://localhost:5000/auth/login",
+        loginState
+      );
+      console.log(res);
+      const data = res.data;
       dispatch({ type: AuthActionType.LOGIN_SUCCESS, payload: data });
-      history.push("/timeline");
+      return <Redirect to="/timeline" />;
     } catch (error) {
       if (error.response) {
         dispatch({
           type: AuthActionType.LOGIN_FAIL,
           payload: error.response.data.message,
         });
-        }
-        setErrorHandler({ hasError: true, message: error.response.data.message });
+      }
+      setErrorHandler({ hasError: true, message: error.response.data.message });
     }
   };
 };
 
 const LogOutAuthAction = (history) => {
-    return async (dispatch) => {
-        try {
-            const res = await axios.get("/logout");
-            const { data } = res;
-            dispatch({
-                type: AuthActionType.LOGOUT_SUCCESS,
-                payload: data.message,
-            });
-            history.push("/login")
-        } catch (error) {
-            if (error.response) {
-                dispatch({ typetype: AuthActionType.LOGIN_FAIL, payload: error.response.data.message });
-            }
-        }
-    };
+  return async (dispatch) => {
+    try {
+      const res = await axios.get("/logout");
+      const { data } = res;
+      dispatch({
+        type: AuthActionType.LOGOUT_SUCCESS,
+        payload: data.message,
+      });
+      history.push("/login");
+    } catch (error) {
+      if (error.response) {
+        dispatch({
+          typetype: AuthActionType.LOGIN_FAIL,
+          payload: error.response.data.message,
+        });
+      }
+    }
+  };
 };
 
-export { AuthActionType, RegisterAuthAction, LogOutAuthAction, LoginAuthAction }
+export {
+  AuthActionType,
+  RegisterAuthAction,
+  LogOutAuthAction,
+  LoginAuthAction,
+};

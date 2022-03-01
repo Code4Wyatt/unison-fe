@@ -1,4 +1,4 @@
-const { AuthActionType } = requice("../actions/AuthAction");
+const { AuthActionType } = require("../actions/AuthAction");
 
 const authError = {
     message: "",

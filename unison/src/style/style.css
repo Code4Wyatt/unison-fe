@@ -1,0 +1,14 @@
+body {
+    height: 100%;
+   
+    color: white;
+}
+
+.sign-in-main {
+    background-image: ("https://images.reference.com/amg-cms-reference-images/media/five-types-musical-instruments_c2b00d653ada9688.jpg");
+    height: 100% no-repeat;
+}
+
+.sign-in-container {
+    height: 500px;
+}

@@ -6,10 +6,10 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -22,9 +22,9 @@ function App() {
         <Router>
             <Routes>
               <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
               <Route path='/timeline' element={<Home />} />
               <Route path='/profile' element={<Profile />} />
-              <Route path='/register' element={<Register />} />
             </Routes>
         </Router>
    
