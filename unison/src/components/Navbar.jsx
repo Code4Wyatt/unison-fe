@@ -4,11 +4,13 @@ import { Nav, Form, FormControl, Container, Button, Badge } from "react-bootstra
 import { useSelector, useDispatch } from "react-redux"
 import "../style/style.css";
 
+
 const NavBar = () => {
   const favourites = useSelector((state) => state.favourites.elements);
 
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
+      
       <Container fluid>
         <Navbar.Brand href="/">RemoteIT</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -30,7 +32,8 @@ const NavBar = () => {
           
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+      </Navbar>
+    
   );
 };
 

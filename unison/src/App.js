@@ -11,7 +11,7 @@ import Register from "./components/auth/Register";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import { useSelector } from "react-redux";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 

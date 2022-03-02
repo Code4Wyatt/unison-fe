@@ -24,10 +24,12 @@ function Register(props) {
       <div className="register-main">
         <div className="container d-flex">
           <div className="register-container py-5 m-auto border">
+              <h4 className="font-weight-bold">Register</h4>
             <div className="sign-in-header">
-              <h4 className="font-weight-bold">Sign Up</h4>
               <p className="sign-in-intro">
-                <span className="text-danger font-weight-bold">Sign In</span>
+                Already a member?   
+                <a href="/login" className="links"><span className="text-danger font-weight-bold"> Sign In</span></a>
+                
               </p>
             </div>
             <form

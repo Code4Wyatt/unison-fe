@@ -44,16 +44,11 @@ function Login(props) {
             <div className="sign-in-header">
               <h4 className="font-weight-bold login__text">Login</h4>
               <p className="sign-in-intro">
+                <a href="/register" className="links" ><span className="text-danger font-weight-bold">Sign Up </span></a>
                 <span className="">
-                  Connect with other musicians!{" "}
+                  and connect with other musicians!{" "}
                 </span>
-                <span className="text-danger font-weight-bold">Sign Up</span>
               </p>
-              <div className="login-social-media py-3">
-                <button className="btn btn-primary btn-block btn-sm">
-                  Continue with Google
-                </button>
-              </div>
             </div>
             <form
               onSubmit={(event) => {
@@ -62,7 +57,7 @@ function Login(props) {
               }}
             >
               <div className="form-group">
-                <label for="InputEmail">Email address</label>
+                <label for="InputEmail">Email Address</label>
                 <input
                   type="email"
                   className="form-control form-control-sm inputs"
@@ -71,9 +66,7 @@ function Login(props) {
                     setLoginState({ ...loginState, ...{ email } });
                   }}
                 />
-                <small id="emailHelp" className="form-text text-muted">
-                  We'll never share your email with anyone else.
-                </small>
+                
               </div>
               <div className="form-group">
                 <label for="InputPassword1">Password</label>
@@ -86,9 +79,14 @@ function Login(props) {
                   }}
                 />
               </div>
-              <button type="submit" className="btn btn-danger btn-sm login__submit">
-                Submit
+              <button type="submit" className="btn btn-danger btn-sm auth__submit">
+                Login
               </button>
+              <div className="login-social-media py-3">
+                <button className="btn btn-primary btn-block btn-sm">
+                  Continue with Google
+                </button>
+              </div>
             </form>
             {/* <img src={" google_icon "} /> */}
           </div>

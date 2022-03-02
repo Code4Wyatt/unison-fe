@@ -10,23 +10,13 @@ const Home = () => {
 
   const user = useSelector((state) => state.user.name);
 
-  console.log(user);
   return (
-    <div className="homeContainer">
-      <Navbar />
-      <div>
-        <Sidebar />
-        <Feed />
-        <Rightbar />
-      </div>
-    </div>
-  );
-}
-
-const mapStateToProps = (state) => {
-  return {
-    user: state,
-  };
+    <>
+        <Navbar />
+      
+      </>
+  )
 };
 
-export default connect(mapStateToProps)(Home);
+
+export default Home

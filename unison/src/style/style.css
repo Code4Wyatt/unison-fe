@@ -9,7 +9,7 @@
 
 .sign-in-container {
   width: 500px;
-  height: 600px;
+  height: 500px;
   padding: 20px;
 }
 
@@ -75,6 +75,10 @@ body {
   background-color: transparent;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.links {
+    text-decoration: none;
 }
 
 .navbar {
