@@ -34,7 +34,7 @@ const RegisterAuthAction = (userState, history, setErrorHandler) => {
 
 const LoginAuthAction = (loginState, history, setErrorHandler) => {
   const API = process.env.API_URL;
-  const navigate = useNavigate();
+
   return async (dispatch) => {
     try {
       const res = await axios.post(
@@ -44,7 +44,7 @@ const LoginAuthAction = (loginState, history, setErrorHandler) => {
       console.log(res);
       const data = res.data;
       dispatch({ type: AuthActionType.LOGIN_SUCCESS, payload: data });
-      return <Redirect to="/timeline" />;
+    history.push("http://localhost:3000/timeline");
     } catch (error) {
       if (error.response) {
         dispatch({
