@@ -1,14 +1,73 @@
-body {
-    height: 100%;
-   
-    color: white;
-}
-
 .sign-in-main {
-    background-image: ("https://images.reference.com/amg-cms-reference-images/media/five-types-musical-instruments_c2b00d653ada9688.jpg");
-    height: 100% no-repeat;
+    z-index: 2;
+    position: relative;
+    bottom: 800px;
+    left: 20px;
+    height: 0px !important;
+    width: 400px;
+     color: white;
 }
 
 .sign-in-container {
+    width: 400px;
     height: 500px;
+    padding: 20px;
+     
+}
+
+.login__container {
+    z-index: 1;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+    
+    
+}
+
+.register-main {
+    
+    z-index: 2;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+     position: relative;
+    bottom: 800px;
+    left: 20px;
+    
+    
+}
+
+.login__text {
+    position: relative;
+    bottom: 10px;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.login__video {
+z-index: 0 ;
+}
+
+.login__title {
+  position: absolute;
+  left: 25px;
+  color: red;
+  font-size: 80px;
+}
+
+.login__subTitle {
+ position: absolute;
+ top: 100px;
+ color: white;
+ left: 30px;
+}
+
+body {
+    overflow-y: hidden; 
+overflow-x: hidden; 
+}
+
+.login__submit {
+    position: relative;
+    top: 15px;
 }

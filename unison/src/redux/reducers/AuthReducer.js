@@ -2,8 +2,8 @@ import axios from "axios";
 import { AuthActionType } from "../actions/AuthAction";
 
 const authState = {
-    isLoggedIn: false,
-    redirect: false,
+  isLoggedIn: false,
+  redirect: false,
   user: {
     name: "",
     expires_at: "",
@@ -12,7 +12,7 @@ const authState = {
   },
 };
 
-const getAuthState = () => {
+export const getAuthState = () => {
   const auth = localStorage.getItem("auth");
   try {
     const authobj = JSON.parse(auth);

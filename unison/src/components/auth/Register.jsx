@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 import { RegisterAuthAction } from "../../redux/actions/AuthAction";
+import register_video from "../../media/register-video.mp4";
+import "../../style/style.css";
 
 function Register(props) {
   const { user, register } = props;
   const [userState, setUserstate] = useState({});
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const [errorHandler, setErrorHandler] = useState({
     hasError: false,
@@ -15,13 +17,16 @@ function Register(props) {
 
   return (
     <div>
-      <div className="sign-in-main">
+      <video autoPlay loop muted className="login__video">
+        <source src={register_video} type="video/mp4" />
+      </video>
+
+      <div className="register-main">
         <div className="container d-flex">
-          <div className="sign-in-container py-5 m-auto border">
+          <div className="register-container py-5 m-auto border">
             <div className="sign-in-header">
               <h4 className="font-weight-bold">Sign Up</h4>
               <p className="sign-in-intro">
-
                 <span className="text-danger font-weight-bold">Sign In</span>
               </p>
               <div className="login-social-media py-3">
@@ -33,7 +38,7 @@ function Register(props) {
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                register(userState, history, setErrorHandler);
+                register(userState, navigate, setErrorHandler);
               }}
             >
               <div className="form-group">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate, Redirect } from "react-router";
+import { useNavigate, Redirect, history } from "react-router";
 
 const AuthActionType = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
@@ -10,13 +10,13 @@ const AuthActionType = {
   LOGIN_FAIL: "LOGIN_FAIL",
 };
 
-const RegisterAuthAction = (userState, history, setErrorHandler) => {
+const RegisterAuthAction = (userState, navigate, setErrorHandler) => {
   return async (dispatch) => {
     try {
       const res = await axios.post("http://localhost:5000/auth/register", userState);
       const { data } = res;
       dispatch({ type: AuthActionType.REGISTER_SUCCESS, payload: data });
-      history.push("/login");
+      navigate("/login");
     } catch (error) {
       if (error.response) {
         dispatch({
@@ -32,7 +32,7 @@ const RegisterAuthAction = (userState, history, setErrorHandler) => {
   };
 };
 
-const LoginAuthAction = (loginState, history, setErrorHandler) => {
+const LoginAuthAction = (loginState, navigate, setErrorHandler) => {
   const API = process.env.API_URL;
 
   return async (dispatch) => {
@@ -42,11 +42,13 @@ const LoginAuthAction = (loginState, history, setErrorHandler) => {
         loginState
       );
       console.log(res);
-      const data = res.data;
+      const { data } = res;
       dispatch({ type: AuthActionType.LOGIN_SUCCESS, payload: data });
-    history.push("http://localhost:3000/timeline");
+      navigate("/timeline")
     } catch (error) {
+      console.log(error)
       if (error.response) {
+         console.log(error)
         dispatch({
           type: AuthActionType.LOGIN_FAIL,
           payload: error.response.data.message,
