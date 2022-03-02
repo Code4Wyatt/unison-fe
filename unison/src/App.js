@@ -22,7 +22,8 @@ function App() {
 
     <Router>
    
-            <Routes>
+      <Routes>
+        
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/timeline' element={<Home />} />

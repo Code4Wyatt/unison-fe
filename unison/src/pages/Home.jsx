@@ -3,7 +3,7 @@ import Feed from "../components/Feed";
 import Rightbar from "../components/Rightbar";
 import { useState } from "react";
 import { useSelector, connect } from "react-redux";
-import Navbar from "../components/Navbar";
+import NavBar from "../components/Navbar";
 
 const Home = () => {
   const [userState, setUserState] = useState();
@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-        <Navbar />
+        <NavBar />
       
       </>
   )
