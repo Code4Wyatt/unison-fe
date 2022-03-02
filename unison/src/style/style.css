@@ -1,51 +1,49 @@
 .sign-in-main {
-    z-index: 2;
-    position: relative;
-    bottom: 800px;
-    left: 20px;
-    height: 0px !important;
-    width: 400px;
-     color: white;
+  z-index: 2;
+  position: relative;
+  bottom: 800px;
+  left: 250px;
+  width: 500px;
+  color: white;
 }
 
 .sign-in-container {
-    width: 400px;
-    height: 500px;
-    padding: 20px;
-     
+  width: 500px;
+  height: 600px;
+  padding: 20px;
 }
 
 .login__container {
-    z-index: 1;
-    height: 100%;
-    overflow: hidden;
-    color: white;
-    
-    
+  z-index: 1;
+  height: 100%;
+  overflow: hidden;
+  color: white;
 }
 
 .register-main {
+  z-index: 2;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+  position: relative;
+  bottom: 1000px;
+  left: 20px;
+}
+
+.register-container {
     
-    z-index: 2;
-    height: 100%;
-    overflow: hidden;
-    color: white;
-     position: relative;
-    bottom: 800px;
-    left: 20px;
-    
-    
+  padding: 30px;
 }
 
 .login__text {
-    position: relative;
-    bottom: 10px;
-    font-size: 40px;
-    margin-bottom: 20px;
+  position: relative;
+  bottom: 10px;
+  font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .login__video {
-z-index: 0 ;
+  z-index: 0;
 }
 
 .login__title {
@@ -56,18 +54,29 @@ z-index: 0 ;
 }
 
 .login__subTitle {
- position: absolute;
- top: 100px;
- color: white;
- left: 30px;
+  position: absolute;
+  top: 100px;
+  color: white;
+  left: 30px;
 }
 
 body {
-    overflow-y: hidden; 
-overflow-x: hidden; 
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-.login__submit {
-    position: relative;
-    top: 15px;
+.auth__submit {
+  position: relative;
+  top: 15px;
+  margin-bottom: 20px;
+}
+
+.inputs {
+  background-color: transparent;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.navbar {
+    background-color: black;
 }

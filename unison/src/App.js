@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import { useSelector } from "react-redux";
 
+
 function App() {
 
   const user = useSelector
@@ -19,7 +20,8 @@ function App() {
 
   return (
 
-        <Router>
+    <Router>
+   
             <Routes>
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />

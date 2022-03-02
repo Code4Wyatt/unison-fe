@@ -65,7 +65,7 @@ function Login(props) {
                 <label for="InputEmail">Email address</label>
                 <input
                   type="email"
-                  className="form-control form-control-sm"
+                  className="form-control form-control-sm inputs"
                   onChange={(event) => {
                     const email = event.target.value;
                     setLoginState({ ...loginState, ...{ email } });
@@ -79,7 +79,7 @@ function Login(props) {
                 <label for="InputPassword1">Password</label>
                 <input
                   type="password"
-                  className="form-control form-control-sm"
+                  className="form-control form-control-sm inputs"
                   onChange={(event) => {
                     const password = event.target.value;
                     setLoginState({ ...loginState, ...{ password } });

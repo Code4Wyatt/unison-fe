@@ -29,11 +29,6 @@ function Register(props) {
               <p className="sign-in-intro">
                 <span className="text-danger font-weight-bold">Sign In</span>
               </p>
-              <div className="login-social-media py-3">
-                <button className="btn btn-primary btn-block btn-sm">
-                  Continue with Google
-                </button>
-              </div>
             </div>
             <form
               onSubmit={(event) => {
@@ -47,7 +42,7 @@ function Register(props) {
                     <label htmlFor="InputEmail">Firstname</label>
                     <input
                       type="text"
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm inputs"
                       placeholder="Firstname"
                       onChange={(event) => {
                         const firstname = event.target.value;
@@ -63,7 +58,7 @@ function Register(props) {
                     <label htmlFor="InputEmail">Surname</label>
                     <input
                       type="text"
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm inputs"
                       placeholder="Surname"
                       onChange={(event) => {
                         const surname = event.target.value;
@@ -78,7 +73,7 @@ function Register(props) {
                 <input
                   type="email"
                   placeholder="Email address"
-                  className="form-control form-control-sm"
+                  className="form-control form-control-sm inputs"
                   onChange={(event) => {
                     const email = event.target.value;
                     setUserstate({ ...userState, ...{ email } });
@@ -93,16 +88,24 @@ function Register(props) {
                 <input
                   type="password"
                   placeholder="Password"
-                  className="form-control form-control-sm"
+                  className="form-control form-control-sm inputs"
                   onChange={(event) => {
                     const password = event.target.value;
                     setUserstate({ ...userState, ...{ password } });
                   }}
                 />
               </div>
-              <button type="submit" className="btn btn-danger btn-sm">
+              <button
+                type="submit"
+                className="btn btn-danger btn-sm auth__submit"
+              >
                 Submit
               </button>
+              <div className="login-social-media py-3">
+                <button className="btn btn-primary btn-block btn-sm">
+                  Continue with Google
+                </button>
+              </div>
             </form>
           </div>
         </div>
