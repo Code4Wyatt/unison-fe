@@ -1,37 +1,95 @@
-import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import { Nav, NavDropdown, Form, FormControl, Container, Button, Badge } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux"
+import React, { Component } from "react";
+import { Container, Navbar, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import unisonLogo from "../media/UnisonLogoPNG.png";
+import vacancyImage from "../media/band.png";
+import mediaImage from "../media/media.png";
+import eventsImage from "../media/events.png";
+import newsImage from "../media/news.png";
+import profilePic from "../media/profilepic.jpg";
+import notificationIcon from "../media/notification.png";
+import messagesIcon from "../media/messages.png";
+import connectionsIcon from "../media/connections.png";
+
 import "../style/style.css";
 
-
 const NavBar = () => {
-
-  
-  const favourites = useSelector((state) => state.favourites.elements);
-
   return (
-    <>
-    <Navbar bg="light" expand="lg">
-  <Container>
-    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Link</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
-    </>
+    <div className="container navbar">
+      <div className="row nav__row">
+        <div className="col nav__logo__section">
+          <img src={unisonLogo} alt="Unison Logo" className="logo" />
+        </div>
+        <div className="col main__links__section d-flex">
+          <div className="main__links">
+            <a href="">
+              <img
+                src={vacancyImage}
+                alt="Vacancies"
+                className="vacancy__logo"
+              />
+            </a>
+          </div>
+          <div className="main__links">
+            <a href="">
+              <img src={mediaImage} alt="Vacancies" className="vacancy__logo" />
+            </a>
+          </div>
+          <div className="main__links">
+            <a href="">
+              <img
+                src={eventsImage}
+                alt="Vacancies"
+                className="vacancy__logo"
+              />
+            </a>
+          </div>
+          <div className="main__links">
+            <a href="">
+              <img src={newsImage} alt="Vacancies" className="vacancy__logo" />
+            </a>
+          </div>
+        </div>
+        <div className="col user__section__nav d-flex">
+          <div className="main__links">
+            <a href="">
+              <img
+                src={connectionsIcon}
+                alt="Vacancies"
+                className="vacancy__logo"
+              />
+            </a>
+          </div>
+          <div className="main__links">
+            <a href="">
+              <img
+                src={messagesIcon}
+                alt="Vacancies"
+                className="vacancy__logo"
+              />
+            </a>
+          </div>
+          <div className="main__links">
+            <a href="">
+              <img
+                src={notificationIcon}
+                alt="Vacancies"
+                className="vacancy__logo"
+              />
+            </a>
+          </div>
+          <div className="main__links">
+            <a href="/profile">
+              <img
+                src={profilePic}
+                alt="Vacancies"
+                className="user__image__nav"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

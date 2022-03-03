@@ -1,3 +1,5 @@
+/* Login and Register styling */
+
 .sign-in-main {
   z-index: 2;
   position: relative;
@@ -63,6 +65,7 @@
 body {
   overflow-y: hidden;
   overflow-x: hidden;
+  background-color: #374b4a;
 }
 
 .auth__submit {
@@ -81,6 +84,52 @@ body {
     text-decoration: none;
 }
 
+/* Navbar styling */
+
 .navbar {
-    background-color: black;
+    background-color: rgba(105, 28, 28, 0);
+    height: 50px !important;
+}
+
+.logo {
+  position: fixed;
+  height: 70px;
+  width: 300px;
+  left: 10px;
+  top: -5px;
+}
+
+.vacancy__logo {
+  height: 30px;
+  color: white !important;
+} 
+
+.nav__logo__section {
+  width: 33%;
+}
+
+.user__section__nav {
+
+  justify-content: end;
+  left: 100px;
+  width: 33%;
+}
+
+.main__links__section {
+
+  justify-content: space-between !important;
+  width: 33%;
+  align-items: center;
+}
+
+.nav__row {
+  width: 100%;
+}
+
+.user__image__nav {
+  position: fixed;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 60%;
 }
