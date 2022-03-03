@@ -109,14 +109,13 @@ body {
 }
 
 .user__section__nav {
-
-  justify-content: end;
-  left: 100px;
+  justify-content: flex-end;
+  position: relative;
+  left: 250px;
   width: 33%;
 }
 
 .main__links__section {
-
   justify-content: space-between !important;
   width: 33%;
   align-items: center;
@@ -132,4 +131,10 @@ body {
   height: 50px;
   width: 50px;
   border-radius: 60%;
+}
+
+.user__links {
+  position: relative;
+  margin-left: 20px;
+  top: 10px;
 }

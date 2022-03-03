@@ -48,10 +48,10 @@ const NavBar = () => {
             <a href="">
               <img src={newsImage} alt="Vacancies" className="vacancy__logo" />
             </a>
-          </div>
+          </div> 
         </div>
         <div className="col user__section__nav d-flex">
-          <div className="main__links">
+          <div className="user__links">
             <a href="">
               <img
                 src={connectionsIcon}
@@ -60,7 +60,7 @@ const NavBar = () => {
               />
             </a>
           </div>
-          <div className="main__links">
+          <div className="user__links">
             <a href="">
               <img
                 src={messagesIcon}
@@ -69,7 +69,7 @@ const NavBar = () => {
               />
             </a>
           </div>
-          <div className="main__links">
+          <div className="user__links">
             <a href="">
               <img
                 src={notificationIcon}
@@ -78,7 +78,7 @@ const NavBar = () => {
               />
             </a>
           </div>
-          <div className="main__links">
+          <div className="">
             <a href="/profile">
               <img
                 src={profilePic}
