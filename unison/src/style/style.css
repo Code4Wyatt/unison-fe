@@ -96,7 +96,7 @@ body {
   height: 70px;
   width: 300px;
   left: 10px;
-  top: -5px;
+  top: 0px;
 }
 
 .vacancy__logo {
@@ -131,6 +131,12 @@ body {
   height: 50px;
   width: 50px;
   border-radius: 60%;
+}
+
+.main__links {
+  position: relative;
+  margin-left: 20px;
+  top: 10px;
 }
 
 .user__links {
