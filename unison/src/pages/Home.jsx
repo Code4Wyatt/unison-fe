@@ -12,9 +12,9 @@ const Home = () => {
   console.log(user);
   return (
     <>
-      <div className="home__container">
+     
         <NavBar />
-      </div>
+      
     </>
   );
 };

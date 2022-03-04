@@ -10,45 +10,46 @@ import profilePic from "../media/profilepic.jpg";
 import notificationIcon from "../media/notification.png";
 import messagesIcon from "../media/messages.png";
 import connectionsIcon from "../media/connections.png";
-
+import FeedIcon from '@mui/icons-material/Feed';
 import "../style/style.css";
 
 const NavBar = () => {
   return (
-    <div className="container navbar">
+    <div className="container-fluid navbar">
       <div className="row nav__row">
         <div className="col nav__logo__section">
           <img src={unisonLogo} alt="Unison Logo" className="logo" />
         </div>
         <div className="col main__links__section d-flex">
           <div className="main__links">
-            <a href="">
+            <Link to="/">
               <img
                 src={vacancyImage}
                 alt="Vacancies"
                 className="vacancy__logo"
               />
-            </a>
+            </Link>
           </div>
           <div className="main__links">
-            <a href="">
+             <Link to="/">
               <img src={mediaImage} alt="Vacancies" className="vacancy__logo" />
-            </a>
+           </Link>
           </div>
           <div className="main__links">
-            <a href="">
+            <Link to="/">
               <img
                 src={eventsImage}
                 alt="Vacancies"
                 className="vacancy__logo"
               />
-            </a>
+           </Link>
           </div>
           <div className="main__links">
-            <a href="">
-              <img src={newsImage} alt="Vacancies" className="vacancy__logo" />
-            </a>
-          </div> 
+            <Link to="/">
+              <FeedIcon />
+           </Link>
+          </div>
+         
         </div>
         <div className="col user__section__nav d-flex">
           <div className="user__links">

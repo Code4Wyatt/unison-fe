@@ -87,16 +87,18 @@ body {
 /* Navbar styling */
 
 .navbar {
-    background-color: rgba(105, 28, 28, 0);
-    height: 50px !important;
+    background-color: rgba(105, 28, 28, 0.233);
+    height: 55px !important;
+    z-index: 1;
+    width: 100%;
 }
 
 .logo {
-  position: fixed;
+  position: absolute;
   height: 70px;
   width: 300px;
   left: 10px;
-  top: 0px;
+  top: -5px;
 }
 
 .vacancy__logo {
@@ -109,10 +111,8 @@ body {
 }
 
 .user__section__nav {
-  justify-content: flex-end;
   position: relative;
-  left: 250px;
-  width: 33%;
+  left: 200px;
 }
 
 .main__links__section {
@@ -128,19 +128,19 @@ body {
 .user__image__nav {
   position: fixed;
   right: 20px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
+  top: 7px;
   border-radius: 60%;
 }
 
 .main__links {
   position: relative;
   margin-left: 20px;
-  top: 10px;
 }
 
 .user__links {
   position: relative;
   margin-left: 20px;
-  top: 10px;
+  height: 5px;
 }
