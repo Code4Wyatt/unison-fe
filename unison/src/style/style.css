@@ -87,7 +87,7 @@ body {
 /* Navbar styling */
 
 .navbar {
-    background-color: rgba(105, 28, 28, 0.233);
+    background-color: rgba(12, 7, 7, 0.233);
     height: 55px !important;
     z-index: 1;
     width: 100%;
@@ -97,7 +97,7 @@ body {
   position: absolute;
   height: 70px;
   width: 300px;
-  left: 10px;
+  left: 40px;
   top: -5px;
 }
 
@@ -127,7 +127,7 @@ body {
 
 .user__image__nav {
   position: fixed;
-  right: 20px;
+  right: 40px;
   height: 40px;
   width: 40px;
   top: 7px;
@@ -139,8 +139,17 @@ body {
   margin-left: 20px;
 }
 
+.user__links__section {
+  display: flex;
+  position: fixed;
+  right: 100px;
+}
 .user__links {
   position: relative;
   margin-left: 20px;
   height: 5px;
+}
+
+.chat__icon{
+  font-size: small;
 }
