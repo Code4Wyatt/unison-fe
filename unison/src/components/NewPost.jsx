@@ -26,7 +26,7 @@ function NewPost() {
             onChange={(e) => setInput(e.target.value)}
             className="messageSender__input"
             type="text"
-            placeholder={`What's on your mind, Paul?`}
+            placeholder={`Sing your song!`}
           />
           <button onClick={handleSubmit} type="submit">
             Hidden Submit

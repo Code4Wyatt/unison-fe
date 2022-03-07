@@ -222,10 +222,11 @@ body {
 }
 
 .messageSender__option:hover {
-    background-color: #eff2f5;
-
+    background-color: #8b8e9218;
     border-radius: 50px;
-    height: 20px;
+    height: 10px;
+    position: relative;
+    top: 10px;
 }
 
 /* Sidebar Row Styling */

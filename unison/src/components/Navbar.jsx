@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container, Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import unisonLogo from "../media/UnisonLogoPNG.png";
 import vacancyImage from "../media/band.png";
@@ -7,7 +6,6 @@ import mediaImage from "../media/media.png";
 import eventsImage from "../media/events.png";
 import newsImage from "../media/news.png";
 import profilePic from "../media/profilepic.jpg";
-
 import FeedIcon from "@mui/icons-material/Feed";
 import "../style/style.css";
 
@@ -30,16 +28,33 @@ const NavBar = () => {
           </div>
           <div className="main__links">
             <Link to="/">
-              <img src={mediaImage} alt="Vacancies" className="vacancy__logo" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-camera-video-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"
+                />
+              </svg>
             </Link>
           </div>
           <div className="main__links">
             <Link to="/">
-              <img
-                src={eventsImage}
-                alt="Vacancies"
-                className="vacancy__logo"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-calendar2-week-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+              </svg>
             </Link>
           </div>
           <div className="main__links">
