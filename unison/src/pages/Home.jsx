@@ -13,8 +13,12 @@ const Home = () => {
   return (
     <>
      
-        <NavBar />
-      
+      <NavBar />
+      <div className="home__body">
+        <Sidebar />
+        <Feed />
+      </div>
+        
     </>
   );
 };

@@ -1,8 +1,9 @@
 import React from 'react'
+import NewPost from "../components/NewPost"
 
 const Feed = () => {
   return (
-    <div>Feed</div>
+    <NewPost />
   )
 }
 
