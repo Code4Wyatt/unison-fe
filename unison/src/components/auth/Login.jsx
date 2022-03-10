@@ -10,7 +10,8 @@ import "../../style/style.css";
 function Login(props) {
 
   const { login } = props;
-
+  const { user } = props;
+  console.log(user)
   const [loginState, setLoginState] = useState({ });
   
   const navigate = useNavigate();

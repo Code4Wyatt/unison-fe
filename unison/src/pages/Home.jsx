@@ -5,10 +5,11 @@ import Feed from "../components/Feed";
 import Rightbar from "../components/Rightbar";
 import NavBar from "../components/Navbar";
 
-const Home = () => {
+const Home = (props) => {
   const [userState, setUserState] = useState();
-
+ 
   const user = useSelector((state) => state.user);
+
   console.log(user);
   return (
     <>
