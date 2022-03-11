@@ -6,9 +6,6 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState([]);
 
-  let token = localStorage.getItem("auth");
-  console.log(token);
-  
   const fetchPosts = async () => {
     try {
       let response = await fetch(`http://localhost:5000/timeline/`);
@@ -24,17 +21,22 @@ const Feed = () => {
   };
 
   const fetchProfile = async () => {
+     // Getting token to use when fetching profile data
+  let token = JSON.parse(localStorage.getItem("auth"));
+  const jwttoken = token.user.accessToken;
+  // console.log(token);
+  console.log(jwttoken);
     try {
       let response = await fetch(`http://localhost:5000/users/currentUser/`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjFkMWMxYzA0NGZmZTQxMGJmYTU2MjUiLCJpYXQiOjE2NDcwMTI4NjAsImV4cCI6MTY0NzAxMzc2MH0.TCev7N5Ie4mcy_Vlfu44aiOa7W1LBm-SQu6FDUbpSw8`,
+          Authorization: `Bearer ${jwttoken}`,
         },
       });
 
       if (response.ok) {
         let data = await response.json();
         setProfile(data);
-        console.log(profile);
+        console.log(data.currentUser.firstname);
       }
     } catch (error) {
       console.log(error);
