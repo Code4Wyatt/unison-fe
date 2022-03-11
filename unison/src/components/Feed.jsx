@@ -7,30 +7,40 @@ const Feed = () => {
   const [profile, setProfile] = useState([]);
 
   const fetchPosts = async () => {
-      try {
-        let response = await fetch(`http://localhost:5000/timeline/`)
-
-        if (response.ok) {
-          let data = await response.json();
-          setPosts(data);
-          console.log(data)
-        }
-      } catch (error) {
-        console.log(error);
-      }
-  }
-
-  const fetchProfile = async () => {
     try {
-      let response = await fetch(`http://localhost:5000/profile/`)
+      let response = await fetch(`http://localhost:5000/timeline/`)
+
+      if (response.ok) {
+        let data = await response.json();
+        setPosts(data);
+        console.log(data)
+      }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const fetchProfile = async () => {
+    try {
+      let token = localStorage.getItem('auth');
+      let response = await fetch(`http://localhost:5000/users/currentUser/`, {
+        headers: { Authorization: `Bearer ${token}`}
+      })
+      if (response.ok) {
+        let data = await response.json();
+        setProfile(data);
+        console.log(profile);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchPosts();
+    fetchProfile();
   }, [])
+
   return (
     <div className="feed__container">
       <NewPost />
