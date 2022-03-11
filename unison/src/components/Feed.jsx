@@ -36,7 +36,7 @@ const Feed = () => {
       if (response.ok) {
         let data = await response.json();
         setProfile(data);
-        console.log(profile.currentUser.firstname);
+        console.log(data.currentUser.firstname);
       }
     } catch (error) {
       console.log(error);

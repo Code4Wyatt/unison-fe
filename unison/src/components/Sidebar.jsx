@@ -12,33 +12,26 @@ import "../style/style.css";
 
 function Sidebar() {
   const [profile, setProfile] = useState([]);
-  const [token, setToken] = useState("");
 
-    console.log(token);
+    
      console.log(profile);
 
-  const declareToken = () => {
-    try {
-      // Getting token to use when fetching profile data
-      let token = JSON.parse(localStorage.getItem("auth"));
-      const jwttoken = token.user.accessToken;
-      // console.log(token);
-      console.log(jwttoken);
-      setToken(jwttoken);
-    } catch (error) {}
-  };
+ 
 
-  const fetchProfile = async () => {
+    const fetchProfile = async () => {
+       let token = JSON.parse(localStorage.getItem("auth"));
+  const jwttoken = token.user.accessToken;
     try {
       let response = await fetch(`http://localhost:5000/users/currentUser/`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${jwttoken}`,
         },
       });
 
       if (response.ok) {
         let data = await response.json();
-        setProfile(data);
+          setProfile(data);
+          console.log(profile)
        
       }
     } catch (error) {
@@ -48,7 +41,6 @@ function Sidebar() {
 
   useEffect(() => {
     fetchProfile();
-      declareToken();
   }, []);
 
   return (
