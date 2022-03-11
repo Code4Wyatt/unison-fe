@@ -1,19 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import NewPost from "../components/NewPost";
 import Post from "../components/Post";
-
+import { useSelector } from "react-redux";
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState([]);
 
+  let token = localStorage.getItem("auth");
+  console.log(token);
+  
   const fetchPosts = async () => {
     try {
-      let response = await fetch(`http://localhost:5000/timeline/`)
+      let response = await fetch(`http://localhost:5000/timeline/`);
 
       if (response.ok) {
         let data = await response.json();
         setPosts(data);
-        console.log(data)
+        console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -22,10 +25,12 @@ const Feed = () => {
 
   const fetchProfile = async () => {
     try {
-      let token = localStorage.getItem('auth');
       let response = await fetch(`http://localhost:5000/users/currentUser/`, {
-        headers: { Authorization: `Bearer ${token}`}
-      })
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjFkMWMxYzA0NGZmZTQxMGJmYTU2MjUiLCJpYXQiOjE2NDcwMTI4NjAsImV4cCI6MTY0NzAxMzc2MH0.TCev7N5Ie4mcy_Vlfu44aiOa7W1LBm-SQu6FDUbpSw8`,
+        },
+      });
+
       if (response.ok) {
         let data = await response.json();
         setProfile(data);
@@ -39,7 +44,7 @@ const Feed = () => {
   useEffect(() => {
     fetchPosts();
     fetchProfile();
-  }, [])
+  }, []);
 
   return (
     <div className="feed__container">
