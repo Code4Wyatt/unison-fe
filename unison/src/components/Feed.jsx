@@ -51,6 +51,7 @@ const Feed = (props) => {
 
 
   return (
+    <>
     <div className="feed__container">
       <NewPost />
       {/* <Post
@@ -63,7 +64,8 @@ const Feed = (props) => {
       {posts.map((post) => {
         return <Post posts={post} />
       })}
-    </div>
+      </div>
+      </>
   );
 };
 
