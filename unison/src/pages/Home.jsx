@@ -8,19 +8,21 @@ import NavBar from "../components/Navbar";
 
 const Home = (props) => {
   const [profile, setProfile] = useState([]);
- const jwtToken = useSelector((state) => state.authState.user.accessToken);
+  const jwtToken = useSelector((state) => state.authState.user.accessToken);
+   const email = useSelector((state) => state.authState.user.email);
+  console.log("email", email);
+  
   console.log(jwtToken);
   
   console.log(profile);
 
   const dispatch = useDispatch();
 
-
   const fetchProfile = async () => {
     // let token = JSON.parse(localStorage.getItem("auth"));
     // const jwttoken = token.user.accessToken;
     try {
-      let response = await fetch(`http://localhost:5000/users/currentUser/`, {
+      let response = await fetch(`http://localhost:5000/users/currentUser/${email}`, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
         },
@@ -30,7 +32,7 @@ const Home = (props) => {
         let data = await response.json();
         console.log(data)
         setProfile(data);
-        dispatch(addCurrentUserAction(data))
+        dispatch(addCurrentUserAction({data}))
         console.log(profile);
       }
     } catch (error) {
@@ -46,7 +48,7 @@ const Home = (props) => {
     <>
       <NavBar props={props} />
       <div className="home__body">
-        <Sidebar />
+        <Sidebar profile={profile} />
         <Feed />
       </div>
     </>

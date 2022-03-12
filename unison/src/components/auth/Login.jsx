@@ -55,6 +55,7 @@ function Login(props) {
               onSubmit={(event) => {
                 event.preventDefault();
                 login(loginState, navigate, setErrorHandler);
+                localStorage.setItem('email', event);
               }}
             >
               <div className="form-group">
@@ -65,6 +66,7 @@ function Login(props) {
                   onChange={(event) => {
                     const email = event.target.value;
                     setLoginState({ ...loginState, ...{ email } });
+                    
                   }}
                 />
                 

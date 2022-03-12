@@ -20,6 +20,7 @@
   height: 100%;
   overflow: hidden;
   color: white;
+  overflow-y: hidden;
 }
 
 .register-main {
@@ -46,6 +47,7 @@
 
 .login__video {
   z-index: 0;
+  width: 100%;
 }
 
 .login__title {
@@ -87,6 +89,7 @@ body {
 /* Navbar styling */
 
 .navbar {
+  position: fixed;
     background-color: rgba(12, 7, 7, 0.233);
     height: 55px !important;
     z-index: 1;
@@ -164,7 +167,7 @@ body {
 
 .messageSender {
     display: flex;
-    margin-top: 30px;
+    margin-top: 80px;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.048);
     border-radius: 15px;
@@ -231,6 +234,25 @@ body {
 
 /* Sidebar Row Styling */
 
+.profile-card {
+  position: fixed;
+  top: 55px;
+  color: rgb(180, 192, 180);
+  height: 400px;
+  width: 20%;
+  margin-left: 40px;
+  margin-top: 30px !important;
+  background-color: rgba(117, 116, 116, 0.185);
+  border-color: black;
+  box-shadow: 0px 5px 7px -7px black;
+  border-radius: 2%;
+}
+
+.profile-card-avatar {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
 .sidebar {
     width: 25%;
 }

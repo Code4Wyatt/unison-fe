@@ -11,10 +11,12 @@ import FeedIcon from "@mui/icons-material/Feed";
 import "../style/style.css";
 
 const NavBar = () => {
-const user = useSelector((state) => state.currentUser.user)
-  console.log(user)
-  console.log(user[0].currentUser.profileImage)
- 
+  const user = useSelector((state) => state.currentUser.user);
+  const email = useSelector((state) => state.authState.user.email);
+  console.log("email", email);
+  console.log(user);
+  console.log(user[0].currentUser.profileImage);
+
   return (
     <div className="container-fluid navbar">
       <div className="row nav__row">
@@ -28,7 +30,7 @@ const user = useSelector((state) => state.currentUser.user)
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
-                fill="purple"
+                fill="grey"
                 class="bi bi-bookmark-plus-fill"
                 viewBox="0 0 16 16"
               >
@@ -45,7 +47,7 @@ const user = useSelector((state) => state.currentUser.user)
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
-                fill="purple"
+                fill="grey"
                 class="bi bi-camera-video-fill"
                 viewBox="0 0 16 16"
               >
@@ -62,7 +64,7 @@ const user = useSelector((state) => state.currentUser.user)
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
-                fill="#881894"
+                fill="grey"
                 class="bi bi-calendar2-week-fill"
                 viewBox="0 0 16 16"
               >
@@ -76,7 +78,7 @@ const user = useSelector((state) => state.currentUser.user)
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
-                fill="purple"
+                fill="grey"
                 class="bi bi-newspaper"
                 viewBox="0 0 16 16"
               >
@@ -94,7 +96,7 @@ const user = useSelector((state) => state.currentUser.user)
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  fill="purple"
+                  fill="gold"
                   class="bi bi-people"
                   viewBox="0 0 16 16"
                 >
@@ -108,7 +110,7 @@ const user = useSelector((state) => state.currentUser.user)
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
-                  fill="purple"
+                  fill="gold"
                   class="bi bi-chat-left"
                   viewBox="0 0 16 16"
                 >
@@ -122,7 +124,7 @@ const user = useSelector((state) => state.currentUser.user)
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="18"
-                  fill="purple"
+                  fill="gold"
                   class="bi bi-bell"
                   viewBox="0 0 16 16"
                 >
