@@ -7,23 +7,24 @@ import { Avatar } from "@material-ui/core";
 import "../style/style.css";
 import React from "react";
 
-function Post({ profilePic, image, username, timestamp, message }) {
+function Post(props) {
+  console.log("post props:", props)
+  console.log(props.posts.content)
   return (
     <div className="post">
       <div className="post__top">
-        <Avatar src={profilePic} className="post__avatar" />
+        <Avatar src={props.post} className="post__avatar" />
         <div className="post__topInfo">
-          <h3>{username}</h3>
-          {timestamp}
+          <h3>{props.userId}</h3>
         </div>
       </div>
 
       <div className="post__bottom">
-        <p>{message}</p>
+        <p>{props.posts.content}</p>
       </div>
 
       <div className="post__image">
-        <img src={image} alt="" />
+        <img src={props.videoUrl} alt="" />
       </div>
 
       <div className="post__options">

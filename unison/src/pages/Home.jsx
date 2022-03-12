@@ -8,24 +8,27 @@ import NavBar from "../components/Navbar";
 
 const Home = (props) => {
   const [profile, setProfile] = useState([]);
-
+ const jwtToken = useSelector((state) => state.authState.user.accessToken);
+  console.log(jwtToken);
+  
   console.log(profile);
 
   const dispatch = useDispatch();
 
 
   const fetchProfile = async () => {
-    let token = JSON.parse(localStorage.getItem("auth"));
-    const jwttoken = token.user.accessToken;
+    // let token = JSON.parse(localStorage.getItem("auth"));
+    // const jwttoken = token.user.accessToken;
     try {
       let response = await fetch(`http://localhost:5000/users/currentUser/`, {
         headers: {
-          Authorization: `Bearer ${jwttoken}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       });
 
       if (response.ok) {
         let data = await response.json();
+        console.log(data)
         setProfile(data);
         dispatch(addCurrentUserAction(data))
         console.log(profile);
@@ -38,6 +41,7 @@ const Home = (props) => {
   useEffect(() => {
     fetchProfile();
   }, []);
+
   return (
     <>
       <NavBar props={props} />
