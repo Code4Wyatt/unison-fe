@@ -19,7 +19,7 @@ const ProfileCard = (profile) => {
             src={user[23].data.currentUser.profileImage}
             alt=" "
                   />
-                  <h6 className="text-center mt-4 my-name">{user[26].data.currentUser.firstname}{" "}{user[23].data.currentUser.surname}</h6>
+                  <h6 className="text-center mt-4 my-name">{user[26].data.currentUser.firstname}{" "}{user[26].data.currentUser.surname}</h6>
         </div>
         
 

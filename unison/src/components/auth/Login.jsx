@@ -22,6 +22,7 @@ function Login(props) {
   });
 
   const loggedIn = useSelector(state => state.isLoggedIn)
+  
   console.log(loggedIn)
   useEffect(() => {
     const goToTimeline = () => navigate("/timeline");
