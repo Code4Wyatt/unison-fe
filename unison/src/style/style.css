@@ -67,7 +67,8 @@
 body {
   
   overflow-x: hidden;
-  background-color: #303131;
+  background-color: #1e1f1f;
+
 }
 
 .auth__submit {
