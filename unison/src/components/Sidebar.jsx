@@ -1,5 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import React, { useState, useEffect } from "react";
+import { useSelector, connect, useDispatch } from "react-redux";
 import SidebarRow from "./SidebarRow";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlags";
@@ -11,43 +12,16 @@ import { ExpandMoreOutlined } from "@mui/icons-material";
 import "../style/style.css";
 
 function Sidebar() {
-  const [profile, setProfile] = useState([]);
 
-    
-     console.log(profile);
-
- 
-
-    const fetchProfile = async () => {
-       let token = JSON.parse(localStorage.getItem("auth"));
-  const jwttoken = token.user.accessToken;
-    try {
-      let response = await fetch(`http://localhost:5000/users/currentUser/`, {
-        headers: {
-          Authorization: `Bearer ${jwttoken}`,
-        },
-      });
-
-      if (response.ok) {
-        let data = await response.json();
-          setProfile(data);
-          console.log(profile)
-       
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProfile();
-  }, []);
+  const user = useSelector((state) => state.currentUser.user)
+  console.log(user)
+  console.log(user[0].currentUser.profileImage)
 
   return (
     <div className="sidebar">
       <SidebarRow
-        src="https://media-exp1.licdn.com/dms/image/C4E03AQFjH2M4r3umhQ/profile-displayphoto-shrink_200_200/0/1629117547194?e=1642636800&v=beta&t=4u_D_k0dRgzK84Xu5-2S3DFN-zdierUdEeay9LJv4Wg"
-        title={profile.currentUser}
+        src={user[0].currentUser.profileImage}
+        title={user[0].currentUser.firstname}
       />
 
       <SidebarRow Icon={EmojiFlagsIcon} title="Pages" class="sideBarButton" />

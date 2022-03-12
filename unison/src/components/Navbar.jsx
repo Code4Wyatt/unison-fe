@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, connect, useDispatch } from "react-redux";
 import unisonLogo from "../media/UnisonLogoPNG.png";
 import vacancyImage from "../media/band.png";
 import mediaImage from "../media/media.png";
@@ -10,6 +11,10 @@ import FeedIcon from "@mui/icons-material/Feed";
 import "../style/style.css";
 
 const NavBar = () => {
+const user = useSelector((state) => state.currentUser.user)
+  console.log(user)
+  console.log(user[0].currentUser.profileImage)
+ 
   return (
     <div className="container-fluid navbar">
       <div className="row nav__row">
@@ -130,7 +135,7 @@ const NavBar = () => {
           <div className="user__image__section">
             <a href="/profile">
               <img
-                src={profilePic}
+                src={user[0].currentUser.profileImage}
                 alt="Vacancies"
                 className="user__image__nav"
               />
