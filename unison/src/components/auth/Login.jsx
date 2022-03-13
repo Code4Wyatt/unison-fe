@@ -8,7 +8,6 @@ import google_icon from "../../media/google-icon.png"
 import "../../style/style.css";
 
 function Login(props) {
-
   const { login } = props;
   const { user } = props;
   console.log(user)

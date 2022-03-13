@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Feed = (props) => {
   const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState([]);
-  console.log(props)
+  
   const fetchPosts = async () => {
     try {
       let response = await fetch(`http://localhost:5000/timeline/`);
@@ -20,6 +20,8 @@ const Feed = (props) => {
     }
   };
 
+  const reversePosts = (posts) => posts.map((post, index, posts) => posts[posts.length - 1 - index])
+  
   const fetchProfile = async () => {
      // Getting token to use when fetching profile data
   let token = JSON.parse(localStorage.getItem("auth"));

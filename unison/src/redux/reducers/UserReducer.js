@@ -10,7 +10,7 @@ export default function favouriteReducer(state = initialState.currentUser, actio
         case ADD_CURRENT_USER: 
             return { 
                 ...state,
-                user: [ ...state.user, payload ],
+                user: [ payload ],
             }
         case REMOVE_CURRENT_USER:
             return {

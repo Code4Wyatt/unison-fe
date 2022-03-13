@@ -16,7 +16,7 @@ function Sidebar(profile) {
   console.log(profile)
   const user = useSelector((state) => state.currentUser.user)
   console.log(user)
-  console.log(user[0].currentUser.profileImage)
+  console.log(user[0].data.currentUser.profileImage)
 
   return (
     <div className="sidebar">

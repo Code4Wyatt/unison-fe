@@ -7,7 +7,7 @@ const ProfileCard = (profile) => {
 
      const user = useSelector((state) => state.currentUser.user);
   console.log(user);
-  console.log(user[23].data.currentUser.profileImage);
+  console.log(user[0].data.currentUser.profileImage);
   return (
     user !== null &&
     <>
@@ -16,10 +16,10 @@ const ProfileCard = (profile) => {
         <div className="img-holder d-flex">
           <img
             className="profile-card-avatar rounded-circle"
-            src={user[23].data.currentUser.profileImage}
+            src={user[0].data.currentUser.profileImage}
             alt=" "
                   />
-                  <h6 className="text-center mt-4 my-name">{user[26].data.currentUser.firstname}{" "}{user[26].data.currentUser.surname}</h6>
+                  <h6 className="text-center mt-4 my-name">{user[0].data.currentUser.firstname}{" "}{user[0].data.currentUser.surname}</h6>
         </div>
         
 

@@ -5,17 +5,30 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import { Avatar } from "@material-ui/core";
 import "../style/style.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Post(props) {
+  const [user, setUser] = useState([]);
   console.log("post props:", props);
-  console.log(props.posts.videoUrl);
+  console.log("post video:", props.posts.videoUrl);
+  console.log(user)
+  console.log(user.firstname)
+   useEffect(() => {
+    const fetchUser = async () => {
+      const user = await fetch(`http://localhost:5000/users/${props.posts.userId}`);
+      let userData = await user.json();
+      console.log("user: ", userData);
+      setUser(userData);
+    };
+    fetchUser();
+   }, [props.posts.userId]);
+  
   return (
     <div className="post">
       <div className="post__top">
-        <Avatar src={props.post} className="post__avatar" />
+        <Avatar src={user.profileImage} className="post__avatar" />
         <div className="post__topInfo">
-          <h3>{props.userId}</h3>
+          <h3>{user.firstname} {user.surname}</h3>
         </div>
       </div>
 

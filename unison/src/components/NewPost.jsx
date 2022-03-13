@@ -3,35 +3,55 @@ import { Avatar } from "@material-ui/core";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/style.css";
 
 function NewPost() {
-  const [input, setInput] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [content, setContent] = useState("");
+  const [author, setAuthor] = useState([]);
+  const [userId, setUserId] = useState("");
 
   const user = useSelector((state) => state.currentUser.user);
+  const currentUserId = useSelector((state) => state.currentUser.user[0].data.currentUser._id);
+  console.log("currentUserId: ", currentUserId)
   console.log(user);
-  console.log(user[0].currentUser.profileImage);
+  console.log(user[0].data.currentUser.profileImage);
 
+  const postAuthor = useSelector((state) => state.currentUser.user);
+
+  const setPostAuthor = () => {
+    setAuthor(postAuthor);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
+    const post = { content, userId };
 
-    setInput("");
-    setImageUrl("");
+    fetch("http://localhost:5000/timeline/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(post),
+    }).then(() => {
+      console.log("new post added");
+    }).catch((error) => {
+      console.log(error.message);
+    });
   };
+
+  useEffect(() => {
+    setUserId(currentUserId)
+  }, [])
 
   return (
     <div className="messageSender">
       <div className="messageSender__top">
-        <Avatar src={user[0].currentUser.profileImage} />
+        <Avatar src={user[0].data.currentUser.profileImage} />
         <form>
           <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             className="messageSender__input"
             type="text"
-            placeholder={`Share your music, ${user[0].currentUser.firstname}!`}
+            placeholder={`Share your music, ${user[0].data.currentUser.firstname}!`}
           />
           <button onClick={handleSubmit} type="submit">
             Hidden Submit

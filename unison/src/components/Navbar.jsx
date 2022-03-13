@@ -15,7 +15,7 @@ const NavBar = () => {
   const email = useSelector((state) => state.authState.user.email);
   console.log("email", email);
   console.log(user);
-  console.log(user[0].currentUser.profileImage);
+  console.log(user[0].data.currentUser.profileImage);
 
   return (
     <div className="container-fluid navbar">
@@ -137,7 +137,7 @@ const NavBar = () => {
           <div className="user__image__section">
             <a href="/profile">
               <img
-                src={user[0].currentUser.profileImage}
+                src={user[0].data.currentUser.profileImage}
                 alt="Vacancies"
                 className="user__image__nav"
               />
