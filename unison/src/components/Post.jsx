@@ -9,15 +9,15 @@ import React, { useEffect, useState } from "react";
 
 function Post(props) {
   const [user, setUser] = useState([]);
-  console.log("post props:", props);
-  console.log("post video:", props.posts.videoUrl);
-  console.log(user)
-  console.log(user.firstname)
+  // console.log("post props:", props);
+  // console.log("post video:", props.posts.videoUrl);
+  // console.log(user)
+  // console.log(user.firstname)
    useEffect(() => {
     const fetchUser = async () => {
       const user = await fetch(`http://localhost:5000/users/${props.posts.userId}`);
       let userData = await user.json();
-      console.log("user: ", userData);
+      // console.log("user: ", userData);
       setUser(userData);
     };
     fetchUser();
@@ -42,9 +42,9 @@ function Post(props) {
           height="720"
           src={props.posts.videoUrl}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
       }
