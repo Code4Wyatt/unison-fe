@@ -13,6 +13,8 @@ function NewPost() {
   const [author, setAuthor] = useState([]);
   const [userId, setUserId] = useState("");
   const [show, setShow] = useState(false);
+  const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,23 +29,57 @@ function NewPost() {
 
   const postAuthor = useSelector((state) => state.currentUser.user);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const post = { videoUrl, content, userId };
+    const submitFile = async (id) => {
+    try {
+      let formData = new FormData();
 
-    fetch("http://localhost:5000/timeline/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(post),
-    })
-      .then(() => {
-        console.log("new post added");
-        window.location.reload(false);
+      formData.append("image", image);
+      let response = await fetch(`http://localhost:5000/timeline/${id}`, {
+        body: formData,
+        method: "POST"
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const post = { videoUrl, content, userId };
+
+      const response = await fetch("http://localhost:5000/timeline/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(post),
+      })
+      if (response.ok) {
+        let res = await response.json()
+        await submitFile(res._id)
+        
+        window.location.reload(false);
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
+    // e.preventDefault();
+    // const post = { videoUrl, content, userId };
+
+    // fetch("http://localhost:5000/timeline/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(post),
+    // })
+    //   .then(() => {
+    //     console.log("new post added");
+    //     window.location.reload(false);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
   };
+
+
 
   useEffect(() => {
     setUserId(currentUserId);
@@ -101,6 +137,13 @@ function NewPost() {
                   type="text"
                   placeholder={`Enter YouTube embed URL`}
                 />
+                <input
+               
+                type="file"
+                id="file"
+                accept=".png,.jpeg,.jpg"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
               </form>
             </Modal.Body>
             <Modal.Footer>
