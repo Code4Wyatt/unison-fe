@@ -79,8 +79,6 @@ function NewPost() {
     //   });
   };
 
-
-
   useEffect(() => {
     setUserId(currentUserId);
   }, []);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, connect, useDispatch } from "react-redux";
-import unisonLogo from "../media/UnisonLogoPNG.png";
+import unisonlogo1 from "../media/unisonlogo1.png";
 import vacancyImage from "../media/band.png";
 import mediaImage from "../media/media.png";
 import eventsImage from "../media/events.png";
@@ -21,7 +21,7 @@ const NavBar = () => {
     <div className="container-fluid navbar">
       <div className="row nav__row">
         <div className="col nav__logo__section">
-          <img src={unisonLogo} alt="Unison Logo" className="logo" />
+          <img src={unisonlogo1} alt="Unison Logo" className="logo" />
         </div>
         <div className="col main__links__section d-flex">
           <div className="main__links">
