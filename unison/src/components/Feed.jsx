@@ -20,7 +20,11 @@ const Feed = (props) => {
     }
   };
 
-  const reversePosts = (posts) => posts.map((post, index, posts) => posts[posts.length - 1 - index])
+  const reversePosts = posts.slice(0).reverse().map(post => {
+    return post;
+  })
+
+  console.log("reversed", reversePosts)
   
   const fetchProfile = async () => {
      // Getting token to use when fetching profile data
@@ -63,7 +67,7 @@ const Feed = (props) => {
         username="Dr. Funk"
         image="https://drfunkbass.com/wp-content/uploads/2021/02/video2.jpg"
       /> */}
-      {posts.map((post) => {
+      {reversePosts.map((post) => {
         return <Post posts={post} />
       })}
       </div>

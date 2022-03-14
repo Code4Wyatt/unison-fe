@@ -4,42 +4,50 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import "../style/style.css";
 
 function NewPost() {
   const [content, setContent] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
   const [author, setAuthor] = useState([]);
   const [userId, setUserId] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const user = useSelector((state) => state.currentUser.user);
-  const currentUserId = useSelector((state) => state.currentUser.user[0].data.currentUser._id);
-  console.log("currentUserId: ", currentUserId)
+  const currentUserId = useSelector(
+    (state) => state.currentUser.user[0].data.currentUser._id
+  );
+  console.log("currentUserId: ", currentUserId);
   console.log(user);
   console.log(user[0].data.currentUser.profileImage);
 
   const postAuthor = useSelector((state) => state.currentUser.user);
 
-  const setPostAuthor = () => {
-    setAuthor(postAuthor);
-  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    const post = { content, userId };
+    const post = { videoUrl, content, userId };
 
     fetch("http://localhost:5000/timeline/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(post),
-    }).then(() => {
-      console.log("new post added");
-    }).catch((error) => {
-      console.log(error.message);
-    });
+    })
+      .then(() => {
+        console.log("new post added");
+        window.location.reload(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   useEffect(() => {
-    setUserId(currentUserId)
-  }, [])
+    setUserId(currentUserId);
+  }, []);
 
   return (
     <div className="messageSender">
@@ -53,7 +61,7 @@ function NewPost() {
             type="text"
             placeholder={`Share your music, ${user[0].data.currentUser.firstname}!`}
           />
-          <button onClick={handleSubmit} type="submit">
+          <button onClick={handleSubmit} type="submit" action="/timeline">
             Hidden Submit
           </button>
         </form>
@@ -75,9 +83,35 @@ function NewPost() {
           </svg>
           <h3>Audio Clip</h3>
         </div>
-        <div className="messageSender__option">
-          <PhotoLibraryIcon style={{ color: "green" }} />
-          <h3>Photo/Video</h3>
+        <div className="messageSender__option ">
+          <Button variant="black" style={{ color: "grey", display: "flex" }} onClick={handleShow}>
+                <PhotoLibraryIcon style={{ color: "green" }} />
+            <h6>Photo/Video</h6>
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add Image/Video</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <form>
+                <input
+                  value={videoUrl}
+                  onChange={(e) => setVideoUrl(e.target.value)}
+                  className="messageSender__videoInput"
+                  type="text"
+                  placeholder={`Enter YouTube embed URL`}
+                />
+              </form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
         <div className="messageSender__option">
           <InsertEmoticonIcon style={{ color: "orange" }} />
