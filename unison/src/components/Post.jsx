@@ -6,14 +6,35 @@ import NearMeIcon from "@mui/icons-material/NearMe";
 import { Avatar } from "@material-ui/core";
 import "../style/style.css";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 function Post(props) {
   const [user, setUser] = useState([]);
-  // console.log("post props:", props);
-  // console.log("post video:", props.posts.videoUrl);
+  const [likes, setLikes] = useState([]);
+
+  const currentUserId = useSelector((state) => state.currentUser.user[0].data.currentUser._id);
+  console.log("post props:", props);
+  console.log("post id:", props.posts._id);
   // console.log(user)
-  // console.log(user.firstname)
-   useEffect(() => {
+  console.log(currentUserId)
+  
+  const likePost = async (currentUserId) => { 
+    
+    try {
+      const likedPost = await fetch(`http://localhost:5000/timeline/:id/like`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      const postData = likedPost.json();
+      setLikes(currentUserId)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+  
+  useEffect(() => {
     const fetchUser = async () => {
       const user = await fetch(`http://localhost:5000/users/${props.posts.userId}`);
       let userData = await user.json();
@@ -57,7 +78,7 @@ function Post(props) {
 
       <div className="post__options">
         <div className="post__option">
-          <ThumbUpIcon />
+          <ThumbUpIcon onClick={likePost}/>
           <p>Like</p>
         </div>
         <div className="post__option">
