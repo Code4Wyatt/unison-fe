@@ -133,14 +133,7 @@ function NewPost() {
                   type="text"
                   placeholder={`Enter YouTube embed URL`}
                 />
-                <div><FileBase type="file" multiple={false} onDone={({ base64 }) => setImage({"image": base64 })} /></div>
-                <input
-               
-                type="file"
-                id="file"
-                accept=".png,.jpeg,.jpg"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
+                <div><FileBase type="file" multiple={false} onDone={({ base64 }) => setImage(base64)} /></div>
               </form>
             </Modal.Body>
             <Modal.Footer>

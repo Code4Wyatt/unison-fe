@@ -48,6 +48,11 @@ function Post(props) {
         ></iframe>
       </div>
       }
+      { props.posts.image && 
+<div className="post__image">
+        <img src={props.posts.image}/>
+      </div>
+      }
       
 
       <div className="post__options">
