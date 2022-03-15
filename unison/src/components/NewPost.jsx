@@ -1,10 +1,11 @@
 import { useSelector, connect, useDispatch } from "react-redux";
 import { Avatar } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import FileBase from 'react-file-base64';
 import "../style/style.css";
 
 function NewPost() {
@@ -46,7 +47,7 @@ function NewPost() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const post = { videoUrl, content, userId };
+      const post = { videoUrl, content, userId, image };
 
       const response = await fetch("http://localhost:5000/timeline/", {
         method: "POST",
@@ -135,6 +136,7 @@ function NewPost() {
                   type="text"
                   placeholder={`Enter YouTube embed URL`}
                 />
+                <div><FileBase type="file" multiple={false} onDone={({ base64 }) => setFile({ selectedFile: base64 })} /></div>
                 <input
                
                 type="file"
