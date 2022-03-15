@@ -14,7 +14,7 @@ function NewPost() {
   const [author, setAuthor] = useState([]);
   const [userId, setUserId] = useState("");
   const [show, setShow] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [file, setFile] = useState(null);
 
   const handleClose = () => setShow(false);
@@ -27,7 +27,7 @@ function NewPost() {
   console.log("currentUserId: ", currentUserId);
   console.log(user);
   console.log(user[0].data.currentUser.profileImage);
-
+  console.log(image)
   const postAuthor = useSelector((state) => state.currentUser.user);
 
     const submitFile = async (id) => {
@@ -55,9 +55,6 @@ function NewPost() {
         body: JSON.stringify(post),
       })
       if (response.ok) {
-        let res = await response.json()
-        await submitFile(res._id)
-        
         window.location.reload(false);
       }
     } catch (error) {
@@ -136,7 +133,7 @@ function NewPost() {
                   type="text"
                   placeholder={`Enter YouTube embed URL`}
                 />
-                <div><FileBase type="file" multiple={false} onDone={({ base64 }) => setFile({ selectedFile: base64 })} /></div>
+                <div><FileBase type="file" multiple={false} onDone={({ base64 }) => setImage({"image": base64 })} /></div>
                 <input
                
                 type="file"
