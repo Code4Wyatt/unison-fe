@@ -5,7 +5,6 @@ import { Button, Modal } from "react-bootstrap";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import FileBase from 'react-file-base64';
 import "../style/style.css";
 
 function NewPost() {
@@ -14,9 +13,10 @@ function NewPost() {
   const [author, setAuthor] = useState([]);
   const [userId, setUserId] = useState("");
   const [show, setShow] = useState(false);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
-
+  const [imagePost, setImagePost] = useState(null);
+  console.log(image)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -28,14 +28,16 @@ function NewPost() {
   console.log(user);
   console.log(user[0].data.currentUser.profileImage);
   console.log(image)
+
+
   const postAuthor = useSelector((state) => state.currentUser.user);
 
-    const submitFile = async (id) => {
+  const submitFile = async (id) => {
     try {
       let formData = new FormData();
 
       formData.append("image", image);
-      let response = await fetch(`http://localhost:5000/timeline/${id}`, {
+      let response = await fetch(`http://localhost:5000/timeline/${id}/image`, {
         body: formData,
         method: "POST"
       })
@@ -43,6 +45,14 @@ function NewPost() {
       console.log(error);
     }
   }
+
+  
+  const TargetFile = (e) => {
+    if (e.target && e.target.files[0]) {
+      setImage(e.target.files[0]);
+      setImagePost(e.target.files[0]);
+    }
+  };
 
   const handleSubmit = async (e) => {
     try {
@@ -56,10 +66,18 @@ function NewPost() {
       })
       if (response.ok) {
         window.location.reload(false);
+  
+      }
+      
+      if (TargetFile) {
+        let res = await response.json();
+        await submitFile(res.file);
       }
     } catch (error) {
       console.log(error.message)
     }
+
+
     // e.preventDefault();
     // const post = { videoUrl, content, userId };
 
@@ -133,7 +151,7 @@ function NewPost() {
                   type="text"
                   placeholder={`Enter YouTube embed URL`}
                 />
-                <div><FileBase type="file" multiple={false} onDone={({ base64 }) => setImage(base64)} /></div>
+                <div><input type="file" name="image" onChange={TargetFile} /></div>
               </form>
             </Modal.Body>
             <Modal.Footer>
