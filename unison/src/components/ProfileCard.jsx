@@ -25,7 +25,7 @@ const ProfileCard = (profile) => {
 
         
         {/* <p className="text-center my-title border-bottom pb-3">{profile.title}</p> */}
-        <div className="views d-flex flex-column px-3 border-bottom mt-3">
+        <div className="views d-flex flex-column px-3 mt-3">
           <div className="views-one d-flex justify-content-between">
             <p>Who viewed your profile</p>
             <span>62</span>

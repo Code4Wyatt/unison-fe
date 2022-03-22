@@ -176,7 +176,7 @@ body {
 
 .messageSender__top {
   display: flex;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgb(255, 231, 125);
   padding: 15px;
 }
 
@@ -244,9 +244,14 @@ body {
   margin-left: 40px;
   margin-top: 30px !important;
   background-color: rgba(117, 116, 116, 0.185);
-  border-color: black;
-  box-shadow: 0px 5px 7px -7px black;
+  border-color: rgb(27, 26, 26);
+  box-shadow: 0px 5px 7px -7px rgb(15, 15, 14);
   border-radius: 2%;
+}
+
+.views {
+  border-bottom: 1px solid gold;
+  border-color: gold;
 }
 
 .profile-card-avatar {
@@ -332,7 +337,7 @@ body {
 
 .post__options {
   padding-top: 10px;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid rgb(245, 213, 71);
   display: flex;
   justify-content: space-evenly;
   font-size: medium;
