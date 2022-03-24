@@ -13,8 +13,8 @@ function Post(props) {
   const [likes, setLikes] = useState([]);
 
   const currentUserId = useSelector((state) => state.currentUser.user[0].data.currentUser._id);
-  console.log("post props:", props);
-  console.log("post id:", props.posts._id);
+  // console.log("post props:", props);
+  // console.log("post id:", props.posts._id);
   // console.log(user)
   console.log(currentUserId)
   

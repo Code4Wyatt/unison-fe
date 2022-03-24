@@ -32,15 +32,20 @@ function NewPost() {
 
   const postAuthor = useSelector((state) => state.currentUser.user);
 
-  const submitFile = async (id) => {
+  const submitFile = async (postId) => {
     try {
       let formData = new FormData();
 
       formData.append("image", image);
-      let response = await fetch(`http://localhost:5000/timeline/${id}/image`, {
+      
+      let response = await fetch(`http://localhost:5000/timeline/${postId}`, {
         body: formData,
         method: "POST"
       })
+
+      console.log(response)
+
+   
     } catch (error) {
       console.log(error);
     }
@@ -64,14 +69,17 @@ function NewPost() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),
       })
+      
+
       if (response.ok) {
-        window.location.reload(false);
-  
+        console.log(response)
+        // window.location.reload(false);
       }
       
       if (TargetFile) {
         let res = await response.json();
-        await submitFile(res.file);
+        console.log(res)
+        await submitFile(res._id);
       }
     } catch (error) {
       console.log(error.message)

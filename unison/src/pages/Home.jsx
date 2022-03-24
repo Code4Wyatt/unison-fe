@@ -9,7 +9,8 @@ import NavBar from "../components/Navbar";
 const Home = (props) => {
   const [profile, setProfile] = useState([]);
   const jwtToken = useSelector((state) => state.authState.user.accessToken);
-   const email = useSelector((state) => state.authState.user.email);
+  const email = useSelector((state) => state.authState.user.email);
+  
   console.log("email", email);
   
   console.log(jwtToken);
