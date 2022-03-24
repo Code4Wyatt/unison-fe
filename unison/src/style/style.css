@@ -308,12 +308,7 @@ body {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
   padding: 15px;
-}
-
-#nav-dropdown {
-  border: 1px solid black;
 }
 
 .post__avatar {
