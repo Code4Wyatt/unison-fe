@@ -16,6 +16,7 @@ function NewPost() {
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
   const [imagePost, setImagePost] = useState(null);
+  const [postId, setPostId] = useState(null);
   console.log(image)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,7 +38,7 @@ function NewPost() {
       let formData = new FormData();
 
       formData.append("image", image);
-      let response = await fetch(`http://localhost:5000/timeline/${id}/image`, {
+      let response = await fetch(`http://localhost:5000/timeline/${id}`, {
         body: formData,
         method: "POST"
       })
@@ -64,14 +65,22 @@ function NewPost() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),
       })
+      const data = await response.json();
+      const currentPostId = data.savedPost._id;
+      console.log(currentPostId);
       if (response.ok) {
-        window.location.reload(false);
+        
+        console.log(data)
+        console.log(data.savedPost._id)
+        
+        
   
       }
       
       if (TargetFile) {
-        let res = await response.json();
-        await submitFile(res._id);
+     
+        await submitFile(currentPostId);
+        window.location.reload(false);
       }
     } catch (error) {
       console.log(error.message)
