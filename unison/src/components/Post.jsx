@@ -4,7 +4,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import { Avatar } from "@material-ui/core";
-import { NavDropdown } from "react-bootstrap";
 import "../style/style.css";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -14,12 +13,8 @@ function Post(props) {
   const [likes, setLikes] = useState([]);
 
   const currentUserId = useSelector((state) => state.currentUser.user[0].data.currentUser._id);
-  const postId = props.posts._id;
-  const postUserId = props.posts.userId;
-
-  console.log("post props:", props);
-  console.log("post id:", props.posts._id);
-  console.log("post user id:", props.posts.userId);
+  // console.log("post props:", props);
+  // console.log("post id:", props.posts._id);
   // console.log(user)
   console.log(currentUserId)
   
@@ -38,17 +33,6 @@ function Post(props) {
       console.log(error.message)
     }
   }
-
-  const deletePost = async () => {
-     const postId = props.posts._id
-    try {
-      const postToDelete = await fetch(`http://localhost:5000/timeline/${postId}`, {
-        method: 'DELETE',
-      })
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
   
   useEffect(() => {
     const fetchUser = async () => {
@@ -63,21 +47,9 @@ function Post(props) {
   return (
     <div className="post">
       <div className="post__top">
-        
-        <div className="post__topInfo d-flex">
-          <Avatar src={user.profileImage} className="post__avatar" />
+        <Avatar src={user.profileImage} className="post__avatar" />
+        <div className="post__topInfo">
           <h3>{user.firstname} {user.surname}</h3>
-        </div>
-        <div className="post__top__options">
-          <NavDropdown title="..." class="dropdown-btn" >
-            {postUserId !== currentUserId &&  <div><NavDropdown.Item eventKey="4.1">Save</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.2">Connect</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.3">View Profile</NavDropdown.Item></div> }
-      
-            
-            {postUserId === currentUserId && <div> <NavDropdown.Item eventKey="4.4" onClick={deletePost}>Delete Post</NavDropdown.Item></div> }
-        
-      </NavDropdown>
         </div>
       </div>
 
