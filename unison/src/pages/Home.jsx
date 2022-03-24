@@ -14,11 +14,14 @@ const Home = (props) => {
   
   console.log(jwtToken);
   
-  console.log(profile);
+  console.log("profile",profile);
 
   const dispatch = useDispatch();
 
-  const fetchProfile = async () => {
+  
+
+  useEffect(() => {
+    const fetchProfile = async () => {
     // let token = JSON.parse(localStorage.getItem("auth"));
     // const jwttoken = token.user.accessToken;
     try {
@@ -27,10 +30,11 @@ const Home = (props) => {
           Authorization: `Bearer ${jwtToken}`,
         },
       });
-
+     
       if (response.ok) {
+        
         let data = await response.json();
-        console.log(data)
+        console.log(data);
         setProfile(data);
         dispatch(addCurrentUserAction({data}))
         console.log(profile);
@@ -39,9 +43,7 @@ const Home = (props) => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    fetchProfile();
+    fetchProfile()
   }, []);
 
   return (

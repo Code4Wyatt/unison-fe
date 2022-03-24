@@ -54,7 +54,7 @@ const LoginAuthAction = (loginState, navigate, setErrorHandler) => {
           payload: error.response.data.message,
         });
       }
-      setErrorHandler({ hasError: true, message: error.response.data.message });
+      setErrorHandler({ hasError: true, message: error.message });
     }
   };
 };

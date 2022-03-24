@@ -71,7 +71,7 @@ function NewPost() {
       
       if (TargetFile) {
         let res = await response.json();
-        await submitFile(res.file);
+        await submitFile(res._id);
       }
     } catch (error) {
       console.log(error.message)
