@@ -14,9 +14,9 @@ function NewPost() {
   const [userId, setUserId] = useState("");
   const [show, setShow] = useState(false);
   const [image, setImage] = useState(null);
-  const [postId, setPostId] = useState(null);
+  const [file, setFile] = useState(null);
   const [imagePost, setImagePost] = useState(null);
-  
+  console.log(image)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -24,25 +24,25 @@ function NewPost() {
   const currentUserId = useSelector(
     (state) => state.currentUser.user[0].data.currentUser._id
   );
-  // console.log("currentUserId: ", currentUserId);
-  // console.log(user);
-  // console.log(user[0].data.currentUser.profileImage);
-  // console.log(image)
+  console.log("currentUserId: ", currentUserId);
+  console.log(user);
+  console.log(user[0].data.currentUser.profileImage);
+  console.log(image)
 
 
   const postAuthor = useSelector((state) => state.currentUser.user);
 
   const submitFile = async (postId) => {
-  
     try {
       let formData = new FormData();
 
       formData.append("image", image);
-
+      
       let response = await fetch(`http://localhost:5000/timeline/${postId}`, {
         body: formData,
         method: "POST"
       })
+
       console.log(response)
 
    
@@ -69,17 +69,17 @@ function NewPost() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),
       })
-      const data = await response.json();
+      
 
       if (response.ok) {
-        const postId = data.savedPost._id;
-        setPostId(postId);
-        console.log(postId)
+        console.log(response)
+        // window.location.reload(false);
       }
       
       if (TargetFile) {
-        await submitFile(data.savedPost._id);
-        window.location.reload(false);
+        let res = await response.json();
+        console.log(res)
+        await submitFile(res._id);
       }
     } catch (error) {
       console.log(error.message)
