@@ -14,14 +14,16 @@ import { Link } from "react-router-dom";
 function Post(props) {
   const [user, setUser] = useState([]);
   const [likes, setLikes] = useState([]);
-  const [comments, setComments] = useState([]);
-  
+  const [postComments, setPostComments] = useState([]);
+
   const currentUserId = useSelector(
     (state) => state.currentUser.user[0].data.currentUser._id
   );
   const postUserId = props.posts.userId;
   const postId = props.posts._id;
-  
+ 
+ 
+  console.log("pc", postComments);
   // console.log(user)
   // console.log("Post User ID: ", postUserId);
   // console.log("Post Props:", props);
@@ -29,11 +31,24 @@ function Post(props) {
 
   const fetchComments = async () => {
     try {
-      const comments = await fetch(`http://localhost:5000/timeline/${postId}/comments`)
+      const comments = await fetch(
+        `http://localhost:5000/timeline/${postId}/comments`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (comments) {
+        let data = await comments.json();
+        setPostComments(data);
+        
+     
+      }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const likePost = async (currentUserId) => {
     try {
@@ -62,7 +77,7 @@ function Post(props) {
         );
         window.location.reload(false);
       } else {
-        console.log('Not your post to delete pal!')
+        console.log("Not your post to delete!");
       }
     } catch (error) {
       console.log(error.message);
@@ -79,14 +94,23 @@ function Post(props) {
       setUser(userData);
     };
     fetchUser();
+    
   }, [props.posts.userId]);
+
+  useEffect(() => {
+    
+  }, [])
+  
+  
 
   return (
     <div className="post">
       <div className="post__top">
         <div className="post__topInfo d-flex">
-          <Link to={`/profile/${props.posts.userId}`}><Avatar src={user.profileImage} className="post__avatar" /></Link>
-          
+          <Link to={`/profile/${props.posts.userId}`}>
+            <Avatar src={user.profileImage} className="post__avatar" />
+          </Link>
+
           <h3>
             {user.firstname} {user.surname}
           </h3>
@@ -94,7 +118,7 @@ function Post(props) {
         <div className="post__top__options">
           {postUserId === currentUserId && (
             <div>
-              <DropdownButton id="dropdown-basic-button" title="...">
+              <DropdownButton id="dropdown-basic-button" title="">
                 <Dropdown.Item href="#/action-1">Save</Dropdown.Item>
                 <Dropdown.Item onClick={deletePost}>Delete Post</Dropdown.Item>
               </DropdownButton>
@@ -102,7 +126,7 @@ function Post(props) {
           )}
           {postUserId !== currentUserId && (
             <div>
-              <DropdownButton id="dropdown-basic-button" title="...">
+              <DropdownButton id="dropdown-basic-button" title="">
                 <Dropdown.Item href="#/action-1">Save</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Connect</Dropdown.Item>
                 <Dropdown.Item href="#/action-3">Message User</Dropdown.Item>
@@ -154,10 +178,18 @@ function Post(props) {
           <ExpandMoreIcon />
         </div>
       </div>
-      <div className="post__comments__section">
-        Show Comments
+    
+      {/* <button onClick={fetchComments}>Show Comments</button>
+      {postComments.length !== -1 && postComments.map((comment) => {
+        return <>
+          
+          <div>{comment.comment}2</div>
+          
+        </>
+        
+        })}    */}
       </div>
-    </div>
+   
   );
 }
 
