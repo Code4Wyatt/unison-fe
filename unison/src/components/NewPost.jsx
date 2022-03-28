@@ -25,6 +25,7 @@ function NewPost() {
   const currentUserId = useSelector(
     (state) => state.currentUser.user[0].data.currentUser._id
   );
+  
   console.log("currentUserId: ", currentUserId);
   console.log(user);
   console.log(user[0].data.currentUser.profileImage);
@@ -78,13 +79,13 @@ function NewPost() {
       }
       
       if (TargetFile) {
-     
         await submitFile(currentPostId);
+
         window.location.reload(false);
       }
     } catch (error) {
       console.log(error.message)
-    }
+    };
 
 
     // e.preventDefault();

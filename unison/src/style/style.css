@@ -295,6 +295,10 @@ body {
 
 /* Post Styling */
 
+#dropdown-basic-button {
+  background-color: transparent !important;
+  border: 1px solid gold;
+}
 .post {
   width: 100%;
   color: white;
@@ -337,7 +341,6 @@ body {
 
 .post__options {
   padding-top: 10px;
-  border-top: 1px solid rgb(245, 213, 71);
   display: flex;
   justify-content: space-evenly;
   font-size: medium;

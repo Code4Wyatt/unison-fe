@@ -26,28 +26,28 @@ const Feed = (props) => {
 
   console.log("reversed", reversePosts)
   
-  const fetchProfile = async () => {
-     // Getting token to use when fetching profile data
-  let token = JSON.parse(localStorage.getItem("auth"));
-  const jwttoken = token.user.accessToken;
-  // console.log(token);
-  console.log(jwttoken);
-    try {
-      let response = await fetch(`http://localhost:5000/users/currentUser/`, {
-        headers: {
-          Authorization: `Bearer ${jwttoken}`,
-        },
-      });
+  // const fetchProfile = async () => {
+  //    // Getting token to use when fetching profile data
+  // let token = JSON.parse(localStorage.getItem("auth"));
+  // const jwttoken = token.user.accessToken;
+  // // console.log(token);
+  // console.log(jwttoken);
+  //   try {
+  //     let response = await fetch(`http://localhost:5000/users/currentUser/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${jwttoken}`,
+  //       },
+  //     });
 
-      if (response.ok) {
-        let data = await response.json();
-        setProfile(data);
-        console.log(data.currentUser.firstname);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     if (response.ok) {
+  //       let data = await response.json();
+  //       setProfile(data);
+  //       console.log(data.currentUser.firstname);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     fetchPosts();
