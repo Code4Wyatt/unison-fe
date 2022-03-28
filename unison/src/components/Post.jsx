@@ -17,6 +17,7 @@ function Post(props) {
     (state) => state.currentUser.user[0].data.currentUser._id
   );
   const postUserId = props.posts.userId;
+  
 
   console.log("post props:", props);
   console.log("post id:", props.posts.userId);
@@ -33,6 +34,25 @@ function Post(props) {
       });
       const postData = likedPost.json();
       setLikes(currentUserId);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const deletePost = async (currentUserId) => {
+    const postId = props.posts._id;
+    try {
+      if (postUserId === currentUserId) {
+        const deletePost = await fetch(
+          `http://localhost:5000/timeline/${postId}`,
+          {
+            method: "DELETE",
+          }
+        );
+        window.location.reload(false);
+      } else {
+        console.log(error)
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -64,16 +84,16 @@ function Post(props) {
             <div>
               <DropdownButton id="dropdown-basic-button" title="...">
                 <Dropdown.Item href="#/action-1">Save</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Delete Post</Dropdown.Item>
+                <Dropdown.Item onClick={deletePost}>Delete Post</Dropdown.Item>
               </DropdownButton>
             </div>
           )}
           {postUserId !== currentUserId && (
             <div>
               <DropdownButton id="dropdown-basic-button" title="...">
-                <Dropdown.Item href="#/action-1">Not</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item href="#/action-1">Save</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Connect</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Message User</Dropdown.Item>
               </DropdownButton>
             </div>
           )}
