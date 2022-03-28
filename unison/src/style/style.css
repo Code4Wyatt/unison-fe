@@ -128,7 +128,7 @@ body {
 
 .user__image__nav {
   position: fixed;
-  right: 40px;
+  right: 70px;
   height: 40px;
   width: 40px;
   top: 7px;
@@ -143,8 +143,9 @@ body {
 .user__links__section {
   display: flex;
   position: fixed;
-  right: 100px;
+  right: 130px;
 }
+
 .user__links {
   position: relative;
   margin-left: 20px;
@@ -462,4 +463,17 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.user__media__section {
+  position: relative;
+  margin-top: 65px;
+  background-color: rgba(117, 116, 116, 0.185);
+  border-color: rgb(27, 26, 26);
+  box-shadow: 0px 5px 7px -7px rgb(15, 15, 14);
+  border-radius: 1%;
+  margin-left: 10px;
+  max-height: 210px;
+  min-width: 74%;
+  max-width: 100%;
 }

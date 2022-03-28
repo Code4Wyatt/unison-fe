@@ -26,8 +26,6 @@ function NewPost() {
     (state) => state.currentUser.user[0].data.currentUser._id
   );
 
-
-  // ? Testing Console Logs
   // console.log("currentUserId: ", currentUserId);
   // console.log(user);
   // console.log(user[0].data.currentUser.profileImage);
@@ -36,7 +34,20 @@ function NewPost() {
 
   const postAuthor = useSelector((state) => state.currentUser.user);
 
-  const submitFile = async (id) => {
+  const updateUserImages = async (req, res, next) => {
+    try {
+      const userImageUpdate = await fetch(`http://localhost:5000/user/${currentUserId}`,
+        {
+          method: 'PUT',
+          media: JSON.stringify()
+          
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const submitFile = async (id, currentUserId) => {
     try {
       let formData = new FormData();
 
@@ -45,6 +56,7 @@ function NewPost() {
         body: formData,
         method: "POST"
       })
+      
     } catch (error) {
       console.log(error);
     }

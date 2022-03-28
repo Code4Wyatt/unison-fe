@@ -7,6 +7,7 @@ import Feed from "../components/Feed";
 import Rightbar from "../components/Rightbar";
 import NavBar from "../components/Navbar";
 import ProfileInfo from "../components/ProfileInfo";
+import UserMedia from "../components/UserMedia";
 
 const Profile = (props) => {
   const [profile, setProfile] = useState([]);
@@ -39,9 +40,10 @@ const Profile = (props) => {
         <div className="profile__cover">
           <img className="cover__image" src={coverImage} alt="" href="/profile/${}" />
         </div>
-        <div className="profile__main">
-          <ProfileInfo id="profileCard" profile={profile} />
-          {/* <Feed /> */}
+        <div className="profile__main d-flex">
+                  <ProfileInfo id="profileCard" profile={profile} />
+                  <UserMedia profile={profile} />
+          {/* <Feed />  */}
         </div>
       </div>
     </>
