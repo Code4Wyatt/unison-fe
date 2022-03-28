@@ -4,8 +4,10 @@ import "../style/style.css";
 
 const ProfileCard = (profile) => {
   const user = useSelector((state) => state.currentUser.user);
+
   console.log(user);
   console.log(user[0].data.currentUser.profileImage);
+  
   return (
     user !== null && (
       <>

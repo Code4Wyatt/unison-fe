@@ -372,6 +372,12 @@ body {
 /* Profile Styling */
 .cover__image {
   z-index: -3;
+  object-fit: cover;
+   position: relative;
+   top: 55px;
+   left: 2.5%;
+   max-width: 95%;
+  justify-content: center;
 }
 
 .profile__body img {
@@ -382,6 +388,7 @@ body {
 
 .profile__cover {
   width: 100% !important;
+ 
 }
 
 .profile-info {
@@ -389,7 +396,7 @@ body {
   color: rgb(180, 192, 180);
   height: 100%;
   width: 20%;
-  margin-left: 40px;
+  margin-left: 60px;
   margin-top: -50px !important;
   background-color: rgba(117, 116, 116, 0.185);
   border-color: rgb(27, 26, 26);

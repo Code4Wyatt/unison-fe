@@ -21,7 +21,9 @@ const NavBar = () => {
     <div className="container-fluid navbar">
       <div className="row nav__row">
         <div className="col nav__logo__section">
-          <img src={unisonlogo1} alt="Unison Logo" className="logo" />
+          <Link to="/timeline">
+            <img src={unisonlogo1} alt="Unison Logo" className="logo" />
+          </Link>
         </div>
         <div className="col main__links__section d-flex">
           <div className="main__links">
@@ -35,7 +37,7 @@ const NavBar = () => {
                 viewBox="0 0 16 16"
               >
                 <path
-                fillRule="evenodd"
+                  fillRule="evenodd"
                   d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"
                 />
               </svg>
@@ -52,7 +54,7 @@ const NavBar = () => {
                 viewBox="0 0 16 16"
               >
                 <path
-                fillRule="evenodd"
+                  fillRule="evenodd"
                   d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"
                 />
               </svg>
