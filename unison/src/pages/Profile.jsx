@@ -3,7 +3,7 @@ import { useSelector, connect, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addCurrentUserAction } from "../redux/actions/UserAction";
 import Sidebar from "../components/Sidebar";
-import Feed from "../components/Feed";
+import UserFeed from "../components/UserFeed";
 import Rightbar from "../components/Rightbar";
 import NavBar from "../components/Navbar";
 import ProfileInfo from "../components/ProfileInfo";
@@ -11,6 +11,8 @@ import UserMedia from "../components/UserMedia";
 
 const Profile = (props) => {
   const [profile, setProfile] = useState([]);
+  const [media, setMedia] = useState([]);
+  const [posts, setPosts] = useState([]);
   const userId = useParams().userId;
   const jwtToken = useSelector((state) => state.authState.user.accessToken);
   const email = useSelector((state) => state.authState.user.email);
@@ -31,6 +33,30 @@ const Profile = (props) => {
       setProfile(userData);
     };
     fetchUser();
+    const userMedia = async () => {
+      try {
+        const userMediaPosts = await fetch(
+          `http://localhost:5000/timeline/${userId}/media`
+        );
+        const mediaData = await userMediaPosts.json();
+        setMedia(mediaData);
+        console.log(mediaData);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    userMedia();
+  }, []);
+
+  useEffect(() => {
+    const fetchUserPosts = async () => {
+      const userPosts = await fetch(
+        `http://localhost:5000/timeline/${userId}/posts`
+      );
+      const postData = await userPosts.json();
+      setPosts(postData);
+    };
+    fetchUserPosts();
   }, []);
 
   return (
@@ -38,12 +64,19 @@ const Profile = (props) => {
       <NavBar props={props} />
       <div className="profile__body">
         <div className="profile__cover">
-          <img className="cover__image" src={coverImage} alt="" href="/profile/${}" />
+          <img
+            className="cover__image"
+            src={coverImage}
+            alt=""
+            href="/profile/${}"
+          />
         </div>
         <div className="profile__main d-flex">
-                  <ProfileInfo id="profileCard" profile={profile} />
-                  <UserMedia profile={profile} />
-          {/* <Feed />  */}
+          <ProfileInfo id="profileCard" profile={profile} />
+          <UserMedia profile={profile} media={media} />
+        </div>
+        <div className="profile__feed">
+          <UserFeed posts={posts} />
         </div>
       </div>
     </>

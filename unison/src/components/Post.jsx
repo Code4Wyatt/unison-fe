@@ -3,6 +3,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import NearMeIcon from "@mui/icons-material/NearMe";
+import AddComment from "../components/AddComment";
 import { Avatar } from "@material-ui/core";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "../style/style.css";
@@ -13,16 +14,26 @@ import { Link } from "react-router-dom";
 function Post(props) {
   const [user, setUser] = useState([]);
   const [likes, setLikes] = useState([]);
-
+  const [comments, setComments] = useState([]);
+  
   const currentUserId = useSelector(
     (state) => state.currentUser.user[0].data.currentUser._id
   );
   const postUserId = props.posts.userId;
-
+  const postId = props.posts._id;
+  
   // console.log(user)
   // console.log("Post User ID: ", postUserId);
   // console.log("Post Props:", props);
   // console.log(currentUserId);
+
+  const fetchComments = async () => {
+    try {
+      const comments = await fetch(`http://localhost:5000/timeline/${postId}/comments`)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const likePost = async (currentUserId) => {
     try {
@@ -130,6 +141,7 @@ function Post(props) {
           <p>Like</p>
         </div>
         <div className="post__option">
+          <AddComment postId={postId} currentUserId={currentUserId} />
           <ChatBubbleOutlineIcon />
           <p>Comment</p>
         </div>
@@ -141,6 +153,9 @@ function Post(props) {
           <AccountCircleIcon />
           <ExpandMoreIcon />
         </div>
+      </div>
+      <div className="post__comments__section">
+        Show Comments
       </div>
     </div>
   );

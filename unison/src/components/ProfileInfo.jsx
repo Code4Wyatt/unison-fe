@@ -45,9 +45,10 @@ const ProfileInfo = (props) => {
             <h5 className="text-center mt-4">
               {props.profile.firstname} {props.profile.surname}
             </h5>
-            <h6 className="text-center">
+            { props.profile.position && <h6 className="text-center">
               {props.profile.position} - {props.profile.bands}
-            </h6>
+            </h6>}
+            
             <p className="text-center">
               {props.profile.location}, {props.profile.country}
             </p>

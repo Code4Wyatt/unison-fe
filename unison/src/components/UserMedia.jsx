@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import "../style/style.css";
 
 const UserMedia = (props) => {
-    console.log("Media props: ", props);
-    const userId = props.profile._id
-    const userMedia = async (req, res, next) => {
-        try {
-            const userById = await fetch(`http://localhost:5000/users/${userId}`)
-        } catch (error) {
-            console.log(error.message)
-        }
-    }
-  return (
-    <div className="user__media__section">UserMediassssssssssssssssssssssssssssssssssssssssss</div>
-  )
-}
+  
 
-export default UserMedia
+  console.log(props);
+  console.log("Media props: ", props.media);
+
+    const userId = props.profile._id;
+    const media = props.media;
+    
+  return (
+    <div className="user__media__section d-flex">
+          {media.map((media) => {
+          return <img className="media__image" src={media.image} />
+      })}  
+    </div>
+  );
+};
+
+export default UserMedia;

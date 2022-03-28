@@ -140,6 +140,12 @@ body {
   margin-left: 20px;
 }
 
+.main__links__section div:hover {
+  position: relative;
+  margin-left: 20px;
+  border-bottom: 1px solid gold;
+}
+
 .user__links__section {
   display: flex;
   position: fixed;
@@ -472,8 +478,27 @@ body {
   border-color: rgb(27, 26, 26);
   box-shadow: 0px 5px 7px -7px rgb(15, 15, 14);
   border-radius: 1%;
-  margin-left: 10px;
+  left: 10px;
+  
   max-height: 210px;
   min-width: 74%;
-  max-width: 100%;
+  width: 500px;
+}
+
+.media__image {
+  position: relative;
+  max-height: 200px !important;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid gold;
+}
+
+.profile__feed {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  right: 10%;
+  width: 95%;
+  
 }
