@@ -312,6 +312,7 @@ body {
   display: flex;
   position: relative;
   align-items: center;
+  justify-content: space-between;
   padding: 15px;
 }
 
@@ -321,6 +322,7 @@ body {
 
 .post__topInfo > h3 {
   font-size: medium;
+  margin-top: 7px;
 }
 
 .post__topInfo > p {

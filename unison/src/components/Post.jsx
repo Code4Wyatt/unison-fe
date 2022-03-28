@@ -16,9 +16,10 @@ function Post(props) {
   const currentUserId = useSelector(
     (state) => state.currentUser.user[0].data.currentUser._id
   );
+  const postUserId = props.posts.userId;
 
   console.log("post props:", props);
-  console.log("post id:", props.posts._id);
+  console.log("post id:", props.posts.userId);
   // console.log(user)
   console.log(currentUserId);
 
@@ -52,18 +53,30 @@ function Post(props) {
   return (
     <div className="post">
       <div className="post__top">
-        <Avatar src={user.profileImage} className="post__avatar" />
-        <div className="post__topInfo">
+        <div className="post__topInfo d-flex">
+          <Avatar src={user.profileImage} className="post__avatar" />
           <h3>
             {user.firstname} {user.surname}
           </h3>
         </div>
-        <div className="post__options">
-          <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </DropdownButton>
+        <div className="post__top__options">
+          {postUserId === currentUserId && (
+            <div>
+              <DropdownButton id="dropdown-basic-button" title="...">
+                <Dropdown.Item href="#/action-1">Save</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Delete Post</Dropdown.Item>
+              </DropdownButton>
+            </div>
+          )}
+          {postUserId !== currentUserId && (
+            <div>
+              <DropdownButton id="dropdown-basic-button" title="...">
+                <Dropdown.Item href="#/action-1">Not</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              </DropdownButton>
+            </div>
+          )}
         </div>
       </div>
 
