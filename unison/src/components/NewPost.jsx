@@ -17,7 +17,7 @@ function NewPost() {
   const [file, setFile] = useState(null);
   const [imagePost, setImagePost] = useState(null);
   const [postId, setPostId] = useState(null);
-  
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -68,16 +68,18 @@ function NewPost() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),
       })
+
       const data = await response.json();
+
       const currentPostId = data.savedPost._id;
+
       console.log(currentPostId);
+
       if (response.ok) {
-        
-        console.log(data)
-        console.log(data.savedPost._id)
-        
-        
   
+        console.log(data);
+        console.log(data.savedPost._id);
+        
       }
       
       if (TargetFile) {
@@ -136,11 +138,11 @@ function NewPost() {
             width="20"
             height="20"
             fill="red"
-            class="bi bi-music-note"
+            className="bi bi-music-note"
             viewBox="0 0 16 16"
           >
             <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
-            <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+            <path fillRule="evenodd" d="M9 3v10H8V3h1z" />
             <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z" />
           </svg>
           <h3>Audio Clip</h3>

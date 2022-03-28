@@ -155,11 +155,21 @@ body {
   font-size: small;
 }
 
+/* ? Page Layout Styling * /
+
 /* -- Home Styling -- */
 
 .home__body {
   display: flex;
 }
+
+/* -- Home Styling -- */
+
+.profile__body {
+  display: flex;
+}
+
+/* ? */
 
 /* NewPost */
 

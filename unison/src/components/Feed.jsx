@@ -60,8 +60,8 @@ const Feed = (props) => {
     <>
     <div className="feed__container">
       <NewPost />
-      {reversePosts.map((post) => {
-        return <Post posts={post} />
+      {reversePosts.map((post, index) => {
+        return <Post key={index} posts={post} />
       })}
       </div>
       </>

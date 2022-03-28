@@ -10,25 +10,19 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import { useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const user = useSelector
-  // user from redux store import
-
   return (
-
     <Router>
       <Routes>
               <Route path='/' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/timeline' element={<Home />} />
-              <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/:userId' element={<Profile />} />
       </Routes>
     </Router>
-   
   );
 }
 

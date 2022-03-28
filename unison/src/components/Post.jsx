@@ -8,6 +8,7 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 import "../style/style.css";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Post(props) {
   const [user, setUser] = useState([]);
@@ -73,7 +74,8 @@ function Post(props) {
     <div className="post">
       <div className="post__top">
         <div className="post__topInfo d-flex">
-          <Avatar src={user.profileImage} className="post__avatar" />
+          <Link to={`/profile/${props.posts.userId}`}><Avatar src={user.profileImage} className="post__avatar" /></Link>
+          
           <h3>
             {user.firstname} {user.surname}
           </h3>

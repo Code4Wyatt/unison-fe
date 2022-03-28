@@ -11,9 +11,9 @@ const Home = (props) => {
   const jwtToken = useSelector((state) => state.authState.user.accessToken);
   const email = useSelector((state) => state.authState.user.email);
 
-  console.log("email", email);
-  console.log(jwtToken);
-  console.log("profile", profile);
+  // console.log(jwtToken);
+  // console.log("email", email);
+  // console.log("profile", profile);
 
   const dispatch = useDispatch();
 
