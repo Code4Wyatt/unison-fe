@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, connect, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import "../style/style.css";
 
-const ProfileInfo = (profile) => {
-    
+const ProfileInfo = () => {
+  const [profile, setProfile] = useState();
+  const userId = useParams().userId;
+
   const user = useSelector((state) => state.currentUser.user);
 
+  console.log(userId);
   console.log(user);
   console.log(user[0].data.currentUser.profileImage);
 
+  const fetchUserById = async (req, res) => {
+    try {
+      const userProfile = await fetch(`http://localhost:5000/users/${userId}`);
+      const userProfileData = await userProfile.json();
+      setProfile(userProfileData);
+    } catch (error) {
+      console.log(error);
+    }
+    };
+    
+    console.log(profile);
+
+  useEffect(() => {
+    fetchUserById();
+  }, []);
   return (
-    user !== null && (
+    profile !== null && (
       <>
         <section
           className="profile-info mt-3" /* onClick={(e) => moveDiv(e)} */
@@ -18,16 +37,16 @@ const ProfileInfo = (profile) => {
           <div className="img-holder d-flex">
             <img
               className="profile-info-avatar"
-              src={user[0].data.currentUser.profileImage}
+              src={profile.profileImage}
               alt=" "
             />
           </div>
           <div className="profile-info-content">
             <h6 className="text-center mt-4">
-              {user[0].data.currentUser.firstname}{" "}
-              {user[0].data.currentUser.surname}
-                      </h6>
-                      <h5></h5>
+              {profile.firstname}{" "}
+              {profile.surname}
+            </h6>
+            <h5></h5>
           </div>
 
           {/* <p className="text-center my-title border-bottom pb-3">{profile.title}</p> */}
