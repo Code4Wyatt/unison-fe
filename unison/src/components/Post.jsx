@@ -17,12 +17,11 @@ function Post(props) {
     (state) => state.currentUser.user[0].data.currentUser._id
   );
   const postUserId = props.posts.userId;
-  
 
-  console.log("post props:", props);
-  console.log("post id:", props.posts.userId);
   // console.log(user)
-  console.log(currentUserId);
+  // console.log("Post User ID: ", postUserId);
+  // console.log("Post Props:", props);
+  // console.log(currentUserId);
 
   const likePost = async (currentUserId) => {
     try {
@@ -39,7 +38,7 @@ function Post(props) {
     }
   };
 
-  const deletePost = async (currentUserId) => {
+  const deletePost = async () => {
     const postId = props.posts._id;
     try {
       if (postUserId === currentUserId) {
@@ -51,7 +50,7 @@ function Post(props) {
         );
         window.location.reload(false);
       } else {
-        console.log(error)
+        console.log('Not your post to delete pal!')
       }
     } catch (error) {
       console.log(error.message);
@@ -94,6 +93,7 @@ function Post(props) {
                 <Dropdown.Item href="#/action-1">Save</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Connect</Dropdown.Item>
                 <Dropdown.Item href="#/action-3">Message User</Dropdown.Item>
+                <Dropdown.Item onClick={deletePost}>Delete Post</Dropdown.Item>
               </DropdownButton>
             </div>
           )}

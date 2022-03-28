@@ -13,7 +13,7 @@ const Feed = (props) => {
       if (response.ok) {
         let data = await response.json();
         setPosts(data);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -24,7 +24,7 @@ const Feed = (props) => {
     return post;
   })
 
-  console.log("reversed", reversePosts)
+  // console.log("reversed", reversePosts)
   
   // const fetchProfile = async () => {
   //    // Getting token to use when fetching profile data

@@ -17,7 +17,7 @@ function NewPost() {
   const [file, setFile] = useState(null);
   const [imagePost, setImagePost] = useState(null);
   const [postId, setPostId] = useState(null);
-  console.log(image)
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,11 +25,13 @@ function NewPost() {
   const currentUserId = useSelector(
     (state) => state.currentUser.user[0].data.currentUser._id
   );
-  
-  console.log("currentUserId: ", currentUserId);
-  console.log(user);
-  console.log(user[0].data.currentUser.profileImage);
-  console.log(image)
+
+
+  // ? Testing Console Logs
+  // console.log("currentUserId: ", currentUserId);
+  // console.log(user);
+  // console.log(user[0].data.currentUser.profileImage);
+  // console.log(image)
 
 
   const postAuthor = useSelector((state) => state.currentUser.user);
