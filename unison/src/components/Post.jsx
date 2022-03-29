@@ -4,6 +4,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import AddComment from "../components/AddComment";
+import Comment from "../components/Comment";
 import { Avatar } from "@material-ui/core";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "../style/style.css";
@@ -21,8 +22,7 @@ function Post(props) {
   );
   const postUserId = props.posts.userId;
   const postId = props.posts._id;
- 
- 
+
   console.log("pc", postComments);
   // console.log(user)
   // console.log("Post User ID: ", postUserId);
@@ -42,8 +42,6 @@ function Post(props) {
       if (comments) {
         let data = await comments.json();
         setPostComments(data);
-        
-     
       }
     } catch (error) {
       console.log(error);
@@ -94,14 +92,12 @@ function Post(props) {
       setUser(userData);
     };
     fetchUser();
-    
   }, [props.posts.userId]);
 
-  useEffect(() => {
-    
-  }, [])
-  
-  
+  useEffect(() => {}, []);
+
+  console.log(props.posts);
+  console.log(props.posts.comments);
 
   return (
     <div className="post">
@@ -178,18 +174,17 @@ function Post(props) {
           <ExpandMoreIcon />
         </div>
       </div>
-    
-      {/* <button onClick={fetchComments}>Show Comments</button>
-      {postComments.length !== -1 && postComments.map((comment) => {
-        return <>
-          
-          <div>{comment.comment}2</div>
-          
-        </>
-        
-        })}    */}
-      </div>
-   
+
+      <button onClick={fetchComments}>Show Comments</button>
+      {props.posts.comments.length !== -1 &&
+        props.posts.comments.map((comment) => {
+          return (
+            <>
+              <Comment comment={comment} />
+            </>
+          );
+        })}
+    </div>
   );
 }
 
