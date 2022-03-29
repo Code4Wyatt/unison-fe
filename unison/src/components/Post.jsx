@@ -154,6 +154,10 @@ function Post(props) {
           <img src={props.posts.image} />
         </div>
       )}
+      <div className="likes__comments d-flex">
+        <p className="likes">Likes {props.posts.likes.length}</p>
+        <p className="comments">Comments {props.posts.comments.length}</p>
+      </div>
 
       <div className="post__options">
         <div className="post__option">
@@ -162,7 +166,7 @@ function Post(props) {
         </div>
         <div className="post__option">
           <AddComment postId={postId} currentUserId={currentUserId} />
-          <ChatBubbleOutlineIcon />
+
           <p>Comment</p>
         </div>
         <div className="post__option">

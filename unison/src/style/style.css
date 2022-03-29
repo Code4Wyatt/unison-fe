@@ -511,8 +511,15 @@ body {
 
 .post__comment__section {
   padding: 10px;
+  margin: 5px;
   background-color: rgba(44, 5, 5, 0);
-  border-top: 1px solid gold;
+  border: 1px solid rgba(255, 217, 0, 0.226);
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.post__comment {
+  margin-left: 35px;
 }
 
 .author__image {
@@ -520,4 +527,24 @@ body {
   width: 30px;
   border-radius: 50%;
   margin-right: 5px;
+}
+
+.like__reply {
+  width: 100%;
+  position: relative;
+  justify-content: start;
+  left: 50px;
+  bottom: 10px;
+}
+
+.likes {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.comments {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
