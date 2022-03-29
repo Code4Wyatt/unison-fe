@@ -38,6 +38,7 @@ export default function AddComment({ currentUserId, postId }) {
       );
       if (response.ok) {
         let comments = await response.json();
+        window.location.reload(true)
         // fetchComments()
       }
     } catch (error) {

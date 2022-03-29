@@ -49,14 +49,16 @@ function Post(props) {
   };
 
   const likePost = async (currentUserId) => {
+    const postId = props.posts._id;
     try {
-      const likedPost = await fetch(`http://localhost:5000/timeline/:id/like`, {
+      const likedPost = await fetch(`http://localhost:5000/timeline/${postId}/like`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
+        likes: currentUserId,
       });
-      const postData = likedPost.json();
+    
       setLikes(currentUserId);
     } catch (error) {
       console.log(error.message);

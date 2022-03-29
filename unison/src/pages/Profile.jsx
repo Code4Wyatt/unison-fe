@@ -73,7 +73,8 @@ const Profile = (props) => {
         </div>
         <div className="profile__main d-flex">
           <ProfileInfo id="profileCard" profile={profile} />
-          <UserMedia profile={profile} media={media} />
+          {media.length >=  1 && <UserMedia profile={profile} media={media} />}
+          
         </div>
         <div className="profile__feed">
           <UserFeed posts={posts} />
