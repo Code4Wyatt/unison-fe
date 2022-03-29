@@ -92,6 +92,7 @@ body {
   height: 55px !important;
   z-index: 1;
   width: 100%;
+  border-bottom: 1px solid rgba(255, 217, 0, 0.411);
 }
 
 .logo {
@@ -183,7 +184,7 @@ body {
 
 .messageSender__top {
   display: flex;
-  border-bottom: 1px solid rgb(255, 231, 125);
+  border-bottom: 1px solid rgba(255, 231, 125, 0.425);
   padding: 15px;
 }
 
@@ -257,8 +258,8 @@ body {
 }
 
 .views {
-  border-bottom: 1px solid gold;
-  border-color: gold;
+  border-bottom: 1px solid rgba(255, 217, 0, 0.404);
+  border-color: rgba(255, 217, 0, 0.39);
 }
 
 .profile-card-avatar {
@@ -266,6 +267,7 @@ body {
   width: 50px;
   margin: 10px;
 }
+
 .sidebar {
   width: 25%;
 }
@@ -304,7 +306,7 @@ body {
 
 #dropdown-basic-button {
   background-color: transparent !important;
-  border: 1px solid gold;
+  border: 1px solid rgba(255, 217, 0, 0.459);
 }
 .post {
   width: 100%;
@@ -313,6 +315,7 @@ body {
   border-radius: 15px;
   background-color: rgba(59, 55, 55, 0.418);
   box-shadow: 0px 5px 7px -7px black;
+  border: 1px solid rgba(255, 217, 0, 0.281);
 }
 
 .post__top {
@@ -356,6 +359,7 @@ body {
   color: gray;
   cursor: pointer;
   padding: 15px;
+  border-top: 1px solid gold;
 }
 
 .post__option {
@@ -501,4 +505,19 @@ body {
   right: 10%;
   width: 95%;
   
+}
+
+/* Comment Styling */
+
+.post__comment__section {
+  padding: 10px;
+  background-color: rgba(44, 5, 5, 0);
+  border-top: 1px solid gold;
+}
+
+.author__image {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
