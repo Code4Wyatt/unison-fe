@@ -48,22 +48,30 @@ function Post(props) {
     }
   };
 
-  const likePost = async (currentUserId) => {
+  const likePost = async () => {
     const postId = props.posts._id;
+    
     try {
-      const likedPost = await fetch(`http://localhost:5000/timeline/${postId}/like`, {
-        method: "PUT",
+      let response = await fetch(`http://localhost:5000/timeline/${postId}/like`,
+      {
+        method: "POST",
+        likes: JSON.stringify({user: currentUserId}),
         headers: {
           "Content-Type": "application/json",
-        },
-        likes: currentUserId,
-      });
-    
-      setLikes(currentUserId);
+        }
+      }
+      
+      )
+      if (response.ok) {
+        let data = await response.json()
+        console.log(data);
+        setLikes(currentUserId)
+        console.log(likes)
+      }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
-  };
+  }
 
   const deletePost = async () => {
     const postId = props.posts._id;
