@@ -8,7 +8,7 @@ import "../style/style.css";
 
 const Media = () => {
     const [media, setMedia] = useState([]);
-    const [video, setVideo] = useState(false);
+    const [video, setVideo] = useState("");
 
   const images = media.filter((media) => media.image);
   const videos = media.filter((media) => media.videoUrl);
@@ -41,7 +41,7 @@ const Media = () => {
         <div className="videos__section">
           <h5>Recent Videos</h5>
           <div className="row">
-            {video && videos.map((video) => {
+            {video === "video" && videos.map((video) => {
                 return (
                   
                 <div class="col-3">
@@ -63,13 +63,13 @@ const Media = () => {
         <div className="image__section ">
           <h5>Recent Images</h5>
           <div className="row d-flex">
-            {images.map((media) => {
+            {/* {images.map((media) => {
               return (
                 <div class="col-3">
                   <img src={media.image} className="media__images" />
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </div>

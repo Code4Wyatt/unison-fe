@@ -190,10 +190,10 @@ function NewPost() {
             </Modal.Footer>
           </Modal>
         </div>
-        <div className="messageSender__option">
+        {/* <div className="messageSender__option">
           <InsertEmoticonIcon style={{ color: "orange" }} />
           <h3>Feeling/Activity</h3>
-        </div>
+        </div> */}
       </div>
     </div>
   );
