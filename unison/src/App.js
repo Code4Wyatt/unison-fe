@@ -4,12 +4,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Media from "./pages/Media";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/timeline' element={<Home />} />
               <Route path='/profile/:userId' element={<Profile />} />
+              <Route path='/media' element={<Media />} />
       </Routes>
     </Router>
   );

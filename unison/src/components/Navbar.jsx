@@ -44,7 +44,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="main__links">
-            <Link to="/">
+            <Link to="/media">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

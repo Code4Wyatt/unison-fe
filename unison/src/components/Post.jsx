@@ -55,7 +55,7 @@ function Post(props) {
       let response = await fetch(`http://localhost:5000/timeline/${postId}/like`,
       {
         method: "POST",
-        likes: JSON.stringify({user: currentUserId}),
+        likes: JSON.stringify({currentUserId}),
         headers: {
           "Content-Type": "application/json",
         }
@@ -67,6 +67,7 @@ function Post(props) {
         console.log(data);
         setLikes(currentUserId)
         console.log(likes)
+        window.location.reload(false);
       }
     } catch (error) {
       console.log(error);
