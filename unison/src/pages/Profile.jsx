@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addCurrentUserAction } from "../redux/actions/UserAction";
@@ -8,6 +8,8 @@ import Rightbar from "../components/Rightbar";
 import NavBar from "../components/Navbar";
 import ProfileInfo from "../components/ProfileInfo";
 import UserMedia from "../components/UserMedia";
+import { motion } from "framer-motion";
+import "../style/style.css";
 
 const Profile = (props) => {
   const [profile, setProfile] = useState([]);
@@ -73,7 +75,17 @@ const Profile = (props) => {
         </div>
         <div className="profile__main d-flex">
           <ProfileInfo id="profileCard" profile={profile} />
-          {media.length >=  1 && <UserMedia profile={profile} media={media} />}
+          <motion.div className="carousel">
+            <motion.div drag="x" className="inner-carousel d-flex">
+              {media.map((media) => {
+                return (
+                  <motion.div><img src={media.image} className="media__image" /></motion.div>
+                )
+              })}
+            </motion.div>
+          </motion.div>
+   
+          
           
         </div>
         <div className="profile__feed">

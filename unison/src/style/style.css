@@ -243,6 +243,8 @@ body {
 
 /* Sidebar Row Styling */
 
+
+
 .profile-card {
   position: fixed;
   top: 55px;
@@ -406,7 +408,7 @@ body {
   position: relative;
   color: rgb(180, 192, 180);
   height: 100%;
-  width: 20%;
+  min-width: 350px;
   margin-left: 60px;
   margin-top: -50px !important;
   background-color: rgba(117, 116, 116, 0.185);
@@ -491,10 +493,15 @@ body {
 
 .media__image {
   position: relative;
+  top: 35%;
+  left: 40%;
   max-height: 200px !important;
+  max-width: 90%;
+  min-width: 200px !important;
   margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 20px;
+
+ 
   border: 1px solid gold;
 }
 
@@ -577,3 +584,16 @@ body {
   top: 100px;
   left: 500px;
 }
+
+.carousel {
+  cursor: grab;
+ 
+}
+
+.media_image {
+  position: relative;
+  height: 200px !important;
+  margin-right: 10px;
+  width: 50px !important;
+}
+
