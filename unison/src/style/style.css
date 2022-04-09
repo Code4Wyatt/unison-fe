@@ -587,6 +587,7 @@ body {
 
 .carousel {
   cursor: grab;
+  overflow: hidden;
  
 }
 
