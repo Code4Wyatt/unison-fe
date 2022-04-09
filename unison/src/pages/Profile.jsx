@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import "../style/style.css";
 
 const Profile = (props) => {
+  const [width, setWidth] = useState(0);
   const [profile, setProfile] = useState([]);
   const [media, setMedia] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -24,6 +25,8 @@ const Profile = (props) => {
   // console.log(jwtToken);
   // console.log("email", email);
   console.log("profile", profile);
+
+  const carousel = useRef();
 
   const dispatch = useDispatch();
 
@@ -61,6 +64,10 @@ const Profile = (props) => {
     fetchUserPosts();
   }, []);
 
+  useEffect(() => {
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  })
+
   return (
     <>
       <NavBar props={props} />
@@ -75,8 +82,8 @@ const Profile = (props) => {
         </div>
         <div className="profile__main d-flex">
           <ProfileInfo id="profileCard" profile={profile} />
-          <motion.div className="carousel">
-            <motion.div drag="x" className="inner-carousel d-flex">
+          <motion.div ref={carousel} className="carousel">
+            <motion.div drag="x" dragConstraints={{right: 0, left: -width}} className="inner-carousel d-flex">
               {media.map((media) => {
                 return (
                   <motion.div><img src={media.image} className="media__image" /></motion.div>
