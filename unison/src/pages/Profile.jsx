@@ -66,7 +66,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-  })
+  });
 
   return (
     <>
@@ -82,18 +82,25 @@ const Profile = (props) => {
         </div>
         <div className="profile__main d-flex">
           <ProfileInfo id="profileCard" profile={profile} />
-          <motion.div ref={carousel} className="carousel">
-            <motion.div drag="x" dragConstraints={{right: 0, left: -width}} className="inner-carousel d-flex">
+          <motion.div
+            ref={carousel}
+            className="carousel"
+            whileTap={{ cursor: "grabbing" }}
+          >
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+              className="inner-carousel d-flex"
+            >
               {media.map((media) => {
                 return (
-                  <motion.div><img src={media.image} className="media__image" /></motion.div>
-                )
+                  <motion.div>
+                    <img src={media.image} className="media__image item" />
+                  </motion.div>
+                );
               })}
             </motion.div>
           </motion.div>
-   
-          
-          
         </div>
         <div className="profile__feed">
           <UserFeed posts={posts} />
