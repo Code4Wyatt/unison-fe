@@ -14,6 +14,24 @@ const Media = () => {
   const videos = media.filter((media) => media.videoUrl);
   console.log(images);
 
+  const axios = require("axios");
+
+const options = {
+  method: 'GET',
+  url: 'https://theaudiodb.p.rapidapi.com/searchalbum.php',
+  params: {s: 'daft_punk'},
+  headers: {
+    'X-RapidAPI-Host': 'theaudiodb.p.rapidapi.com',
+    'X-RapidAPI-Key': '5107a355f0mshff5e59e28a599d4p147358jsn70be46886c1a'
+  }
+};
+
+axios.request(options).then(function (response) {
+	console.log("data", response.data);
+}).catch(function (error) {
+	console.error(error);
+});
+
   const fetchMediaInPosts = async () => {
     try {
       const postMedia = await fetch("http://localhost:5000/timeline/");

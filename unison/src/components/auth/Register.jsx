@@ -28,7 +28,7 @@ function Register(props) {
             <div className="sign-in-header">
               <p className="sign-in-intro">
                 Already a member?   
-                <a href="/login" className="links"><span className="text-danger font-weight-bold"> Sign In</span></a>
+                <a href="/" className="links"><span className="text-danger font-weight-bold"> Sign In</span></a>
                 
               </p>
             </div>

@@ -12,7 +12,7 @@ const Home = (props) => {
   const email = useSelector((state) => state.authState.user.email);
 
   // console.log(jwtToken);
-  // console.log("email", email);
+  console.log("email", email);
   // console.log("profile", profile);
 
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Home = (props) => {
 
         if (response.ok) {
           let data = await response.json();
-          console.log(data);
+          console.log("Profile:", data);
           setProfile(data);
           dispatch(addCurrentUserAction({ data }));
           console.log(profile);

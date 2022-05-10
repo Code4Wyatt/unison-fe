@@ -13,9 +13,9 @@ import "../style/style.css";
 const NavBar = () => {
   const user = useSelector((state) => state.currentUser.user);
   const email = useSelector((state) => state.authState.user.email);
-  console.log("email", email);
-  console.log(user);
-  console.log(user[0].data.currentUser.profileImage);
+  // console.log("email", email);
+  // console.log(user);
+  // console.log(user[0].data.currentUser.profileImage);
 
   return (
     <div className="container-fluid navbar">
