@@ -22,6 +22,7 @@ function NewPost() {
   const handleShow = () => setShow(true);
 
   const user = useSelector((state) => state.currentUser.user);
+  
   const currentUserId = useSelector(
     (state) => state.currentUser?.user[0]?.data?.currentUser._id
   );
@@ -154,13 +155,13 @@ function NewPost() {
           </svg>
           <h3>Audio Clip</h3>
         </div>
-        <div className="messageSender__option ">
+        <div className="messageSender__option glow-on-hover">
           <Button
             variant="black"
             style={{ color: "grey", display: "flex" }}
             onClick={handleShow}
           >
-            <PhotoLibraryIcon style={{ color: "green" }} className="glow-on-hover" />
+            <PhotoLibraryIcon style={{ color: "green" }} />
             <h6>Photo/Video</h6>
           </Button>
           <Modal show={show} onHide={handleClose}>

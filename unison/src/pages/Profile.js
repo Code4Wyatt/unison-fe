@@ -20,6 +20,7 @@ const Profile = (props) => {
   const jwtToken = useSelector((state) => state.authState.user.accessToken);
   const email = useSelector((state) => state.authState.user.email);
   const coverImage = profile.coverImage;
+  
   console.log(props);
   console.log(userId);
   // console.log(jwtToken);
