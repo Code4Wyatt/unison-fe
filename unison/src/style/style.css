@@ -289,6 +289,8 @@ body {
   align-items: center;
   color: gray;
   margin: 5px;
+  position: relative;
+  top: 10px;
 }
 
 .messageSender__option > h3 {
@@ -300,9 +302,8 @@ body {
 .messageSender__option:hover {
   background-color: #8b8e9218;
   border-radius: 50px;
-  height: 10px;
-  position: relative;
-  top: 10px;
+
+ 
 }
 
 .messageSender__videoInput {
