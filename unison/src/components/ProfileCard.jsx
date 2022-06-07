@@ -18,20 +18,20 @@ const ProfileCard = (profile) => {
           <div className="img-holder d-flex">
             <img
               className="profile-card-avatar rounded-circle"
-              src={user[0].data.currentUser.profileImage}
+              src={user[0]?.data.currentUser.profileImage}
               alt=" "
             />
             <h6 className="text-center mt-4 my-name">
-              {user[0].data.currentUser.firstname}{" "}
-              {user[0].data.currentUser.surname}
+              {user[0]?.data.currentUser.firstname}{" "}
+              {user[0]?.data.currentUser.surname}
             </h6>
           </div>
 
           {/* <p className="text-center my-title border-bottom pb-3">{profile.title}</p> */}
           <div className="views d-flex flex-column px-3 mt-3">
             <div className="views-one d-flex justify-content-between">
-              <p>{user[0].data.currentUser.position}</p>
-              <p>{user[0].data.currentUser.location}</p>
+              <p>{user[0]?.data.currentUser.position}</p>
+              <p>{user[0]?.data.currentUser.location}</p>
               
             </div>
             <div className="views-two d-flex justify-content-between mt-2 mb-3">

@@ -29,7 +29,7 @@ function NewPost() {
 
   console.log("currentUserId: ", currentUserId);
   console.log(user);
-  console.log(user[0].data.currentUser.profileImage);
+  console.log(user[0]?.data.currentUser.profileImage);
   console.log(image);
 
   const postAuthor = useSelector((state) => state.currentUser.user);
@@ -94,7 +94,8 @@ function NewPost() {
       if (TargetFile) {
         await submitFile(currentPostId);
 
-        window.location.reload(false);
+      window.location.reload(true);
+        
       }
     } catch (error) {
       console.log(error.message);
@@ -124,14 +125,14 @@ function NewPost() {
   return (
     <div className="messageSender">
       <div className="messageSender__top">
-        <Avatar src={user[0].data.currentUser.profileImage} />
+        <Avatar src={user[0]?.data.currentUser.profileImage} />
         <form>
           <input
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="messageSender__input"
             type="text"
-            placeholder={`Share your music, ${user[0].data.currentUser.firstname}!`}
+            placeholder={`Share your music, ${user[0]?.data.currentUser.firstname}!`}
           />
           <button onClick={handleSubmit} type="submit" action="/timeline">
             Hidden Submit

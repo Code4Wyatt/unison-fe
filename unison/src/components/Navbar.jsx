@@ -139,7 +139,7 @@ const NavBar = () => {
           <div className="user__image__section">
             <a href="/profile">
               <img
-                src={user[0].data.currentUser.profileImage}
+                src={user[0]?.data.currentUser.profileImage}
                 alt="Vacancies"
                 className="user__image__nav"
               />

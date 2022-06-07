@@ -18,7 +18,7 @@ function Post(props) {
   const [postComments, setPostComments] = useState([]);
 
   const currentUserId = useSelector(
-    (state) => state.currentUser.user[0].data.currentUser._id
+    (state) => state.currentUser.user[0]?.data.currentUser._id
   );
   const postUserId = props.posts.userId;
   const postId = props.posts._id;
