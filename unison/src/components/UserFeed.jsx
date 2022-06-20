@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NewPost from "../components/NewPost";
 import Post from "../components/Post";
 import { useSelector } from "react-redux";
-
+import "../style/style.css"
 const UserFeed = (props) => {
   const [posts, setPosts] = useState([]);
 
@@ -59,7 +59,7 @@ const UserFeed = (props) => {
 
   return (
     <>
-    <div className="feed__container">
+    <div className="feed__container-profile">
       <NewPost />
       {reversePosts.map((post, index) => {
         return <Post key={index} posts={post} />

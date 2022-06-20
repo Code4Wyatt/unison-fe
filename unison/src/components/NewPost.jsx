@@ -22,41 +22,31 @@ function NewPost() {
   const handleShow = () => setShow(true);
 
   const user = useSelector((state) => state.currentUser.user);
-  
+
   const currentUserId = useSelector(
     (state) => state.currentUser?.user[0]?.data?.currentUser._id
   );
 
-  console.log("currentUserId: ", currentUserId);
-  console.log(user);
-  console.log(user[0]?.data.currentUser.profileImage);
+
+  // console.log("currentUserId: ", currentUserId);
+  // console.log(user);
+  // console.log(user[0]?.data.currentUser.profileImage);
   console.log(image);
 
   const postAuthor = useSelector((state) => state.currentUser.user);
 
-  const updateUserImages = async (req, res, next) => {
-    try {
-      const userImageUpdate = await fetch(
-        `http://localhost:5000/user/${currentUserId}`,
-        {
-          method: "PUT",
-          media: JSON.stringify(),
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const submitFile = async (id, currentUserId) => {
+  const submitFile = async (postId) => {
+    let img = image;
     try {
       let formData = new FormData();
 
-      formData.append("image", image);
-      let response = await fetch(`http://localhost:5000/timeline/${id}`, {
+      formData.append("image", img);
+      let response = await fetch(`http://localhost:5000/timeline/${postId}`, {
         body: formData,
         method: "POST",
       });
+      let data = response.json();
+      console.log(data)
     } catch (error) {
       console.log(error);
     }
@@ -65,14 +55,14 @@ function NewPost() {
   const TargetFile = (e) => {
     if (e.target && e.target.files[0]) {
       setImage(e.target.files[0]);
-      setImagePost(e.target.files[0]);
     }
   };
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const post = { videoUrl, content, userId, image };
+
+      const post = { videoUrl, content, userId };
 
       const response = await fetch("http://localhost:5000/timeline/", {
         method: "POST",
@@ -82,40 +72,40 @@ function NewPost() {
 
       const data = await response.json();
 
-      const currentPostId = data.savedPost._id;
+      const id = data.savedPost._id;
 
-      console.log(currentPostId);
+      setPostId(id);
+      console.log(id);
 
-      if (response.ok) {
-        console.log(data);
-        console.log(data.savedPost._id);
-      }
+    
 
       if (TargetFile) {
-        await submitFile(currentPostId);
+        await submitFile(data.savedPost._id);
 
-      window.location.reload(true);
-        
+        window.location.reload(false);
       }
+
+
+     
     } catch (error) {
       console.log(error.message);
     }
 
-    e.preventDefault();
-    const post = { videoUrl, content, userId };
 
-    fetch("http://localhost:5000/timeline/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(post),
-    })
-      .then(() => {
-        console.log("new post added");
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    // const post = { videoUrl, content, userId };
+
+    // fetch("http://localhost:5000/timeline/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(post),
+    // })
+    //   .then(() => {
+    //     console.log("new post added");
+    //     window.location.reload(true);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
   };
 
   useEffect(() => {
@@ -132,7 +122,7 @@ function NewPost() {
             onChange={(e) => setContent(e.target.value)}
             className="messageSender__input"
             type="text"
-            placeholder={`Share your music, ${user[0]?.data.currentUser.firstname}!`}
+            placeholder={`Share your music, ${user[0].data.currentUser.firstname}!`}
           />
           <button onClick={handleSubmit} type="submit" action="/timeline">
             Hidden Submit

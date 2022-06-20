@@ -373,6 +373,12 @@ body {
   margin-bottom: 100px;
 }
 
+.feed__container-profile {
+  width: 50% !important;
+  margin-bottom: 100px;
+  margin-top: 150px;
+}
+
 /* Post Styling */
 
 #dropdown-basic-button {
